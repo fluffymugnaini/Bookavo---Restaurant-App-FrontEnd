@@ -51,6 +51,7 @@ alert("Here's a new restaurant")
 }
    
    return (
+       <>
         <div className={css.container}>
             <h1 className={css.restName}>{restaurant.name}</h1>
             <img className={css.img} src={restaurant.photoURL} alt = "restaurant image" height="600px"/>
@@ -63,18 +64,21 @@ alert("Here's a new restaurant")
                 <li>{restaurant.area}</li>
                 <li>{restaurant.postcode}</li>
                 </ul>
-                <div className={css.buttons}>
+               
+                </div>
+                 <div className={css.buttons}>
                 <Button text="Book" handleClick={Book}/>
     <Button text="Give me another!" handleClick={newRec}/>
     </div>
-                </div>
+     </div>
                 <p className={css.description}> {restaurant.description}</p>
                     <a
                     href={restaurant.websiteURL}
                     target="_blank"
                     style={{ color: "#3d7ea6" }}> 
-                    Click here to go to Restaurant website</a>            
-        </div>
+                    Click here to go to Restaurant website</a>   
+    </>         
+       
     )
 }
 

@@ -1,38 +1,37 @@
 .container {
-    position: relative;
-    color: white;
-    text-align: center;
+  position: relative;
+  color: white;
+  text-align: center;
 }
 
 .img {
-    width: 80%;
-    
+  width: 80%;
 }
 
 .restName {
-    position: relative;
-    top: 120px;
-    left: -580px;
-    font-size: 3em;
+  position: relative;
+  top: 120px;
+  left: -580px;
+  font-size: 3em;
 }
 
 ul {
-    list-style-type: none;
-    font-size: 1.3em;
+  list-style-type: none;
+  font-size: 1.3em;
 }
 
 .restInfo {
-    position: absolute;
-    bottom: 100px;
-    right: 200px;
+  position: absolute;
+  bottom: 100px;
+  right: 200px;
 }
 
 .description {
-    color: black;
-    margin: 0 10%;
+  color: black;
+  margin: 0 10%;
 }
 
 .buttons {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: left;
 }
