@@ -6,6 +6,7 @@
 
 .img {
     width: 80%;
+    
 }
 
 .restName {
@@ -24,4 +25,14 @@ ul {
     position: absolute;
     bottom: 100px;
     right: 200px;
+}
+
+.description {
+    color: black;
+    margin: 0 10%;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
 }

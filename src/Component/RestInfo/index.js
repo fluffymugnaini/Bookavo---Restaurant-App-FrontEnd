@@ -1,5 +1,9 @@
 import React, {useReducer, useEffect} from 'react';
 import css from './restInfo.module.css';
+import Button from '../Button';
+
+
+
 
 function reducer (state, action){
     switch (action.type) {
@@ -38,22 +42,33 @@ function RestInfo({ id }) {
     getRestaurants();
   }, [id]); 
    
+  function Book(){
+alert("Cool you've booked")
+}
+
+function newRec(){
+alert("Here's a new restaurant")
+}
    
    return (
         <div className={css.container}>
             <h1 className={css.restName}>{restaurant.name}</h1>
             <img className={css.img} src={restaurant.photoURL} alt = "restaurant image" height="600px"/>
-            <ul>
                 <div className={css.restInfo}>
+            <ul>
                 <li>{restaurant.openingTimes}</li>
                 <li>{restaurant.closingTimes}</li>
                 <li>{restaurant.phoneNumber}</li>
                 <li>{restaurant.addressLine1}</li>
                 <li>{restaurant.area}</li>
                 <li>{restaurant.postcode}</li>
-                </div>
                 </ul>
-                <p> {restaurant.description}</p>
+                <div className={css.buttons}>
+                <Button text="Book" handleClick={Book}/>
+    <Button text="Give me another!" handleClick={newRec}/>
+    </div>
+                </div>
+                <p className={css.description}> {restaurant.description}</p>
                     <a
                     href={restaurant.websiteURL}
                     target="_blank"
