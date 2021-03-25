@@ -12,6 +12,7 @@ function reducer (state, action){
 
 const INITIAL_REST = {
     name:"DOM'S DINER",
+    description:"If you're visiting this page, you're likely here because you're searching for a random sentence. Sometimes a random word just isn't enough, and that is where the random sentence generator comes into play. By inputting the desired number, you can make a list of as many random sentences as you want or need. Producing random sentences can be helpful in a number of different ways.",
     openingTimes:"Opening Time: 18:00hrs",
     closingTimes:"Closing Time: 00:00hrs",
     phoneNumber:"+01219878787",
@@ -51,14 +52,13 @@ function RestInfo({ id }) {
                 <li>{restaurant.area}</li>
                 <li>{restaurant.postcode}</li>
                 </div>
-                <li>
+                </ul>
+                <p> {restaurant.description}</p>
                     <a
                     href={restaurant.websiteURL}
                     target="_blank"
                     style={{ color: "#3d7ea6" }}> 
-                    Click here to go to Restaurant website</a></li>
-            </ul>
-            <h2> </h2>
+                    Click here to go to Restaurant website</a>            
         </div>
     )
 }
