@@ -1,4 +1,5 @@
 import React, {useReducer, useEffect} from 'react';
+import css from './restInfo.module.css';
 
 function reducer (state, action){
     switch (action.type) {
@@ -11,8 +12,8 @@ function reducer (state, action){
 
 const INITIAL_REST = {
     name:"DOM'S DINER",
-    openingTimes:"18:00hrs",
-    closingTime:"00:00hrs",
+    openingTimes:"Opening Time: 18:00hrs",
+    closingTimes:"Closing Time: 00:00hrs",
     phoneNumber:"+01219878787",
     addressLine1:"61 Chapel Street",
     area:"Central",
@@ -38,16 +39,18 @@ function RestInfo({ id }) {
    
    
    return (
-        <div>
-            <h1>{restaurant.name}</h1>
-            <img src={restaurant.photoURL} alt = "restaurant image" width="650px" height="600px"/>
+        <div className={css.container}>
+            <h1 className={css.restName}>{restaurant.name}</h1>
+            <img className={css.img} src={restaurant.photoURL} alt = "restaurant image" height="600px"/>
             <ul>
+                <div className={css.restInfo}>
                 <li>{restaurant.openingTimes}</li>
                 <li>{restaurant.closingTimes}</li>
                 <li>{restaurant.phoneNumber}</li>
                 <li>{restaurant.addressLine1}</li>
                 <li>{restaurant.area}</li>
                 <li>{restaurant.postcode}</li>
+                </div>
                 <li>
                     <a
                     href={restaurant.websiteURL}

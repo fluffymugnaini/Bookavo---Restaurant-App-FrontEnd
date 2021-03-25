@@ -1,0 +1,27 @@
+.container {
+    position: relative;
+    color: white;
+    text-align: center;
+}
+
+.img {
+    width: 80%;
+}
+
+.restName {
+    position: relative;
+    top: 120px;
+    left: -300px;
+    font-size: 3em;
+}
+
+ul {
+    list-style-type: none;
+    font-size: 1.3em;
+}
+
+.restInfo {
+    position: absolute;
+    bottom: 100px;
+    right: 200px;
+}
