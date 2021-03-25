@@ -26,21 +26,21 @@ const INITIAL_REST = {
     websiteURL:"www.google.com",
     photoURL:"https://images.unsplash.com/photo-1552566626-52f8b828add9?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80",
 };
-const BACKEND_URL ="https:localhost:5001/restaurants";
+const BACKEND_URL ="https:localhost:5000/restaurants";
 
 function RestInfo({ id }) {
    const [restaurant, dispatch] = useReducer (reducer, INITIAL_REST);
    
    useEffect(() => {
     async function getRestaurants() {
-      let response = await fetch(`${BACKEND_URL}/${id}`); 
+      let response = await fetch(`${BACKEND_URL}/1`); 
       let data = await response.json();
       console.log(data);
-      dispatch({ type: "REST", payload: data });
-      console.log(restaurant);
+    //   dispatch({ type: "REST", payload: data });
+    //   console.log(restaurant);
     }
     getRestaurants();
-  }, [id]); 
+  }, []); 
    
   function Book(){
 alert("Cool you've booked")
