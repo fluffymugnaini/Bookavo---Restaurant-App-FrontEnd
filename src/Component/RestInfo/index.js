@@ -15,7 +15,7 @@ function reducer (state, action){
 }
 
 const INITIAL_REST = {
-    name:"DOM'S DINER",
+    name:"RAFF'S REFINERY",
     description:"If you're visiting this page, you're likely here because you're searching for a random sentence. Sometimes a random word just isn't enough, and that is where the random sentence generator comes into play. By inputting the desired number, you can make a list of as many random sentences as you want or need. Producing random sentences can be helpful in a number of different ways.",
     openingTimes:"Opening Time: 18:00hrs",
     closingTimes:"Closing Time: 00:00hrs",
@@ -56,7 +56,7 @@ alert("Here's a new restaurant")
             <h1 className={css.restName}>{restaurant.name}</h1>
             <img className={css.img} src={restaurant.photoURL} alt = "restaurant image" height="600px"/>
                 <div className={css.restInfo}>
-            <ul>
+            <ul >
                 <li>{restaurant.openingTimes}</li>
                 <li>{restaurant.closingTimes}</li>
                 <li>{restaurant.phoneNumber}</li>
@@ -64,19 +64,20 @@ alert("Here's a new restaurant")
                 <li>{restaurant.area}</li>
                 <li>{restaurant.postcode}</li>
                 </ul>
-               
                 </div>
                  <div className={css.buttons}>
                 <Button text="Book" handleClick={Book}/>
-    <Button text="Give me another!" handleClick={newRec}/>
+                <Button text="Give me another!" handleClick={newRec}/>
     </div>
      </div>
+     <div className={css.extraDetails}>
                 <p className={css.description}> {restaurant.description}</p>
                     <a
                     href={restaurant.websiteURL}
                     target="_blank"
                     style={{ color: "#3d7ea6" }}> 
                     Click here to go to Restaurant website</a>   
+                    </div>
     </>         
        
     )

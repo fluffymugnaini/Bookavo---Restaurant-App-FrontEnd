@@ -1,7 +1,11 @@
 .container {
-  position: relative;
+
   color: white;
   text-align: center;
+  margin: 0px;
+  position: relative;
+  top: -150px;
+ 
 }
 
 .img {
@@ -9,21 +13,33 @@
 }
 
 .restName {
+display: flex;
+  justify-content: left;
+  margin-left: 15%;
   position: relative;
-  top: 120px;
-  left: -580px;
-  font-size: 3em;
+  top: 200px;
+  font-size: 5em;
+  color: white;
+    background-color: rgba(0, 0, 0, 0.432);
+  max-width: fit-content;
 }
 
 ul {
   list-style-type: none;
-  font-size: 1.3em;
+  font-size: 1.5em;
+  margin: 0;
+  padding: 10px;
 }
 
 .restInfo {
-  position: absolute;
-  bottom: 100px;
-  right: 200px;
+    display: flex;
+    justify-content: right;
+    position: relative;
+  bottom: 225px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.432);
+  max-width: fit-content;
+  margin-left: 72%;
 }
 
 .description {
@@ -34,4 +50,12 @@ ul {
 .buttons {
   display: flex;
   justify-content: left;
+  margin: 0 10%;
+  position: relative;
+  top: -290px;
+}
+
+.extraDetails{
+    position: relative;
+    bottom: 450px;
 }
