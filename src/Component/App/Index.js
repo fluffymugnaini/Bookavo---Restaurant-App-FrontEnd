@@ -2,13 +2,13 @@ import './App.css';
 import Header from '../Header/';
 import Button from '../Button';
 import RestInfo from '../RestInfo';
+import BookingPage from '../BookingPage';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
   return (
     <Router>
     <div className="App">
-      <Header />
       <nav>
               <ul>
                 <li>
@@ -28,7 +28,7 @@ function App() {
 
 <Switch>
               <Route path="/bookings">
-                <Header />
+                <BookingPage />
               </Route>
               <Route path="/recs">
                 <RestInfo/>

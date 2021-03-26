@@ -1,6 +1,7 @@
 import React, {useReducer, useEffect, useState} from 'react';
 import css from './restInfo.module.css';
 import Button from '../Button';
+import Header from '../Header';
 
 
 
@@ -65,6 +66,7 @@ console.log(id)
    
    return (
        <>
+       <Header/>
         <div className={css.container}>
             <h1 className={css.restName}>{restaurant.restaurantName}</h1>
             <img className={css.img} src={restaurant.photoURL} alt = "restaurant image" height="600px"/>
