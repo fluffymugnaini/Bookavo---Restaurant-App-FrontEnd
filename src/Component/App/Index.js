@@ -2,26 +2,50 @@ import './App.css';
 import Header from '../Header/';
 import Button from '../Button';
 import RestInfo from '../RestInfo';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
-  
-// function Book(){
-// alert("Cool you've booked")
-// }
-
-// function newRec(){
-// alert("Here's a new restaurant")
-// }
-
   return (
+    <Router>
     <div className="App">
       <Header />
-      <div>
-        <RestInfo/>
-   {/* <Button text="Book" handleClick={Book}/>
-    <Button text="Give me another!" handleClick={newRec}/> */}
-      </div>
+      <nav>
+              <ul>
+                <li>
+                  <Link to="/">Landing Page</Link>
+                </li>
+                <li>
+                  <Link to="/recs">Recommendations</Link>
+                </li>
+                <li>
+                  <Link to="/bookings">Booking Page</Link>
+                </li>
+                <li>
+                  <Link to="/reservations">Reservations</Link>
+                </li>
+              </ul>
+            </nav>
+
+<Switch>
+              <Route path="/bookings">
+                <Header />
+              </Route>
+              <Route path="/recs">
+                <RestInfo/>
+              </Route>
+              <Route path="/reservations">
+                <Header />
+              </Route>
+              <Route path="/">
+                <Header />
+              </Route>
+            </Switch>
+
+    
+        
+     
         </div>
+        </Router>
   );
   }
 
