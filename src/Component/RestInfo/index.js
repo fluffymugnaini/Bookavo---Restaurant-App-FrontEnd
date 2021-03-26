@@ -26,7 +26,7 @@ const INITIAL_REST = {
     websiteURL:"www.google.com",
     photoURL:"https://images.unsplash.com/photo-1552566626-52f8b828add9?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80",
 };
-const BACKEND_URL ="https:localhost:5000/restaurants";
+const BACKEND_URL ="https://localhost:5001/restaurants";
 
 function RestInfo({ id }) {
    const [restaurant, dispatch] = useReducer (reducer, INITIAL_REST);
