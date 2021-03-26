@@ -6,8 +6,29 @@ import css from './bookingPage.module.css';
 
 function BookingPage() {
   const { register, handleSubmit, watch, errors, formState: { isSubmitting } } = useForm();
-  const onSubmit = data => console.log(data);
 
+  const BACKEND_URL ="https://localhost:5001/bookings";
+
+  const onSubmit = data => {
+    console.log(data);
+    // POST request using fetch inside useEffect React hook
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          RestaurantID : 1,           //needs to pull the id from the restInfo 
+          CustomerName: data.fullName,
+          BookingDate: data.date,
+          BookingTime: data.time,
+          NumberOfPeople: parseInt(data.number),
+          CustomerMobile: data.mobile,
+          CustomerEmail: data.email})
+    };
+    
+    fetch(`${BACKEND_URL}`, requestOptions);
+        // .then(response => response.json())
+        // .then(data => console.log(data));
+};
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
