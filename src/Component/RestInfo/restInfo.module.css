@@ -24,23 +24,21 @@ display: flex;
   max-width: fit-content;
 }
 
-ul {
+.restDetails {
   list-style-type: none;
   font-size: 1.5em;
-  margin: 0;
-  padding: 10px;
-}
-
-.restInfo {
-    display: flex;
+  display: flex;
     justify-content: right;
-    position: relative;
-  bottom: 225px;
-  color: white;
+    flex-direction: column;
+  padding: 40px;
   background-color: rgba(0, 0, 0, 0.432);
   max-width: fit-content;
-  margin-left: 72%;
+  position: relative;
+  bottom: 300px;
+  margin-left: 67%;
 }
+
+
 
 .description {
   color: black;
@@ -52,10 +50,16 @@ ul {
   justify-content: left;
   margin: 0 10%;
   position: relative;
-  top: -290px;
+  top: -433px;
 }
 
 .extraDetails{
     position: relative;
-    bottom: 450px;
+    bottom: 550px;
+    text-align: center;
+}
+
+.description{
+  font-size: 2em;
+  color: white;
 }

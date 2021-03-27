@@ -70,8 +70,8 @@ console.log(id)
         <div className={css.container}>
             <h1 className={css.restName}>{restaurant.restaurantName}</h1>
             <img className={css.img} src={restaurant.photoURL} alt = "restaurant image" height="600px"/>
-                <div className={css.restInfo}>
-            <ul >
+           
+            <ul className={css.restDetails}>
                 <li>Opening Time: {restaurant.openingTimes}</li>
                 <li>Closing Time: {restaurant.closingTimes}</li>
                 <li>Phone Number: {restaurant.phoneNumber}</li>
@@ -79,10 +79,10 @@ console.log(id)
                 <li>{restaurant.area}</li>
                 <li>{restaurant.postcode}</li>
                 </ul>
-                </div>
+                
                  <div className={css.buttons}>
                 <Button text="Book" handleClick={Book}/>
-                <Button text="Give me another!" handleClick={newRec}/>
+                <Button text="Next" handleClick={newRec}/>
     </div>
      </div>
      <div className={css.extraDetails}>

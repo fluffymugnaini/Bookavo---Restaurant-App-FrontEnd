@@ -32,7 +32,7 @@ function BookingPage() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-  <h1>Book a Table</h1>
+  <h1 className={css.h1}>Book a Table</h1>
       <label>Full Name:</label>
       <input name="fullName" ref={register({ required: true })} />
       {/* <DatePicker

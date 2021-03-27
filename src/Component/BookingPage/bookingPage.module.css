@@ -1,16 +1,11 @@
-body {
-  background: #0e101c;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-}
+
 
 form {
   max-width: 500px;
   margin: 0 auto;
 }
 
-h1 {
+.h1 {
   font-weight: 100;
   color: white;
   text-align: center;
@@ -25,7 +20,7 @@ h1 {
 }
 
 p {
-  color: #bf1650;
+  color: #FF6D72;
 }
 
 p::before {

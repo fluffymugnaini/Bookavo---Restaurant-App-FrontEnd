@@ -1,8 +1,17 @@
 .header {
     text-align: left;
-    margin-left: 10%;
+    font-weight: 100;
+  color: white;
+  margin-left: 10%;
+  border-bottom: 1px solid rgb(79, 98, 148);
 }
 
 .title {
-    font-size: 4em;
+    font-size: 5em;
+}
+
+.tag {
+    font-size: 0.3em;
+    color: #FF6D72;
+    
 }

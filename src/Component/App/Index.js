@@ -3,13 +3,14 @@ import Header from '../Header/';
 import Button from '../Button';
 import RestInfo from '../RestInfo';
 import BookingPage from '../BookingPage';
+import ReservationPage from '../ReservationPage';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
   return (
     <Router>
     <div className="App">
-      <nav>
+      <nav class="nav">
               <ul>
                 <li>
                   <Link to="/">Landing Page</Link>
@@ -34,7 +35,7 @@ function App() {
                 <RestInfo/>
               </Route>
               <Route path="/reservations">
-                <Header />
+                <ReservationPage />
               </Route>
               <Route path="/">
                 <Header />
