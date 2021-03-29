@@ -13,7 +13,7 @@ function ReservationPage() {
       let data = await response.json();
       console.log(data);
       console.log(data.bookingDate)
-    //   setData(data)
+      setData(data)
     }
     getBookings();
   }, []); 
@@ -29,19 +29,23 @@ function ReservationPage() {
                   },
                   {
                       Header: "Time",
-                      accessor: "data.bookingTime"
+                      accessor: "bookingTime"
                   },
                   {
                       Header: "Number of People",
-                      accessor: "data"
+                      accessor: "numberOfPeople"
                   },
                   {
                       Header: "Reserver Name",
-                      accessor: "data.fullName"
+                      accessor: "customerName"
                   },
                   {
-                      Header: "Contact Details",
-                      accessor: "data.email"
+                      Header: "Email",
+                      accessor: "customerEmail"
+                  },
+                  {
+                      Header: "Mobile",
+                      accessor: "customerMobile"
                   },
               ]
           }
