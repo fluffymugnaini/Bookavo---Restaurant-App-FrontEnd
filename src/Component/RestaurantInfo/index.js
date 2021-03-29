@@ -4,7 +4,7 @@ import Button from "../Button";
 import Header from "../Header";
 import { Link, Route } from "react-router-dom";
 // import BookingPage from "../BookingPage";
-// import BACKEND_URL_Restaurants from "../../libs/config";
+import {BACKEND_URL_Restaurants} from "../../libs/config";
 
 // function reducer(state, action) {
 //   switch (action.type) {
@@ -29,7 +29,7 @@ import { Link, Route } from "react-router-dom";
 // };
 
 
-const BACKEND_URL = "https://localhost:5001/restaurants";
+// const BACKEND_URL = "https://localhost:5001/restaurants";
 
 function RestaurantInfo({restaurant, dispatch, id, newRec}) {
   // const [restaurant, dispatch] = useReducer(reducer, INITIAL_REST);
@@ -37,7 +37,7 @@ function RestaurantInfo({restaurant, dispatch, id, newRec}) {
 
   useEffect(() => {
     async function getRestaurants() {
-      let response = await fetch(`${BACKEND_URL}/${id}`);
+      let response = await fetch(`${BACKEND_URL_Restaurants}/${id}`);
       let data = await response.json();
       console.log(data);
       dispatch({ type: "REST", payload: data });
