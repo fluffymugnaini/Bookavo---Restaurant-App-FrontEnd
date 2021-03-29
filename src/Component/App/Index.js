@@ -29,7 +29,7 @@ function App() {
 
 <Switch>
               <Route path="/bookings">
-                <BookingPage />
+                <BookingPage id={11}/>
               </Route>
               <Route path="/recs">
                 <RestInfo/>

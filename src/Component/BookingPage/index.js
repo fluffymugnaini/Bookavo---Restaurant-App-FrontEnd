@@ -4,7 +4,7 @@ import css from "./bookingPage.module.css";
 
 // import DatePicker from "react-datepicker";
 
-function BookingPage() {
+function BookingPage({id}) {
   const {
     register,
     handleSubmit,
@@ -38,7 +38,9 @@ function BookingPage() {
   };
 
   function Book() {
-    alert("Cool you've booked");
+    console.log(id);
+    //alert("Cool you've booked");
+    alert(id);
   }
 
   return (
@@ -87,6 +89,7 @@ function BookingPage() {
         disabled={isSubmitting}
         type="submit"
         onClick={() => {
+          
           Book();
         }}
       />

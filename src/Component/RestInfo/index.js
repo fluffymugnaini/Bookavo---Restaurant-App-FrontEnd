@@ -2,7 +2,8 @@ import React, { useReducer, useEffect, useState } from "react";
 import css from "./restInfo.module.css";
 import Button from "../Button";
 import Header from "../Header";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
+import BookingPage from '../BookingPage'
 
 function reducer(state, action) {
   switch (action.type) {
@@ -80,8 +81,11 @@ function RestInfo() {
         </ul>
 
         <div className={css.buttons}>
-        <Link to={{pathname: '/bookings', state: {id: `${id}`}}}>
-            <Button text="Book" handleClick={() => {}} />
+        {/* <Route path='/bookings'>
+            <BookingPage id={`${id}`} />
+        </Route> */}
+        <Link to={{pathname:'/bookings', state:{id:{id}}}}>
+            <Button text="Book" handleClick={() => {console.log(id)}} />
           </Link>
           <Button text="Next" handleClick={newRec} />
         </div>
