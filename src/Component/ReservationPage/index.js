@@ -18,36 +18,36 @@ function ReservationPage() {
     getBookings();
   }, []); 
 
-//   const columns = useMemo(
-//       () => [
-//           {
-//               Header: "Restaurant Name",
-//               columns: [
-//                   {
-//                       Header: "Date",
-//                       accessor: "0[bookingDate]"
-//                   },
-//                   {
-//                       Header: "Time",
-//                       accessor: "data.bookingTime"
-//                   },
-//                   {
-//                       Header: "Number of People",
-//                       accessor: "data"
-//                   },
-//                   {
-//                       Header: "Reserver Name",
-//                       accessor: "data.fullName"
-//                   },
-//                   {
-//                       Header: "Contact Details",
-//                       accessor: "data.email"
-//                   },
-//               ]
-//           }
-//       ],
-//       []
-//   )
+  const columns = useMemo(
+      () => [
+          {
+              Header: "Restaurant Name",
+              columns: [
+                  {
+                      Header: "Date",
+                      accessor: "bookingDate"
+                  },
+                  {
+                      Header: "Time",
+                      accessor: "data.bookingTime"
+                  },
+                  {
+                      Header: "Number of People",
+                      accessor: "data"
+                  },
+                  {
+                      Header: "Reserver Name",
+                      accessor: "data.fullName"
+                  },
+                  {
+                      Header: "Contact Details",
+                      accessor: "data.email"
+                  },
+              ]
+          }
+      ],
+      []
+  )
 
  
 
@@ -56,7 +56,7 @@ function ReservationPage() {
                 <h1>Reservation Page</h1>
              
               
-                {/* <Table columns={columns} data={data} /> */}
+                <Table columns={columns} data={data} />
             </div>
         )
     }
