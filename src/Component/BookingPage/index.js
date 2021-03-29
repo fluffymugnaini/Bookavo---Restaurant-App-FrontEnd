@@ -1,12 +1,13 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
-import css from './bookingPage.module.css';
+import css from "./bookingPage.module.css";
+import BACKEND_URL_Bookings from "../../libs/config";
 // import DatePicker from "react-datepicker";
 
-function BookingPage({id}) {
+function BookingPage({ id }) {
   const {
     register,
     handleSubmit,
@@ -18,7 +19,7 @@ function BookingPage({id}) {
 
   const [selectedDate, setSelectedDate] = useState(null);
 
-  const BACKEND_URL = "https://localhost:5001/bookings";
+  // const BACKEND_URL = "https://localhost:5001/bookings";
 
   const onSubmit = (data) => {
     console.log(data);
@@ -41,7 +42,7 @@ function BookingPage({id}) {
       }),
     };
 
-    fetch(`${BACKEND_URL}`, requestOptions);
+    fetch(`${BACKEND_URL_Bookings}`, requestOptions);
     // .then(response => response.json())
     // .then(data => console.log(data));
   };
@@ -103,7 +104,7 @@ function BookingPage({id}) {
           ref={register({ required: true })}
         />
       </section>
-      
+
       <label>Time:</label>
       <input name="time" ref={register({ required: true })} />
       <label>Your Mobile Number</label>
@@ -118,7 +119,6 @@ function BookingPage({id}) {
         disabled={isSubmitting}
         type="submit"
         onClick={() => {
-          
           Book();
         }}
       />

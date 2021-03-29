@@ -3,7 +3,8 @@ import css from "./restInfo.module.css";
 import Button from "../Button";
 import Header from "../Header";
 import { Link, Route } from "react-router-dom";
-import BookingPage from '../BookingPage'
+import BookingPage from "../BookingPage";
+import BACKEND_URL_Restaurants from "../../libs/config";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -37,7 +38,8 @@ const INITIAL_REST = {
 //     postcode:"B170X",
 //     websiteURL:"www.google.com",
 //     photoURL:"https://images.unsplash.com/photo-1552566626-52f8b828add9?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80",
-const BACKEND_URL = "https://localhost:5001/restaurants";
+
+// const BACKEND_URL = "https://localhost:5001/restaurants";
 
 function RestInfo() {
   const [restaurant, dispatch] = useReducer(reducer, INITIAL_REST);
@@ -45,7 +47,7 @@ function RestInfo() {
 
   useEffect(() => {
     async function getRestaurants() {
-      let response = await fetch(`${BACKEND_URL}/${id}`);
+      let response = await fetch(`${BACKEND_URL_Restaurants}/${id}`);
       let data = await response.json();
       console.log(data);
       dispatch({ type: "REST", payload: data });
@@ -81,11 +83,16 @@ function RestInfo() {
         </ul>
 
         <div className={css.buttons}>
-        {/* <Route path='/bookings'>
+          {/* <Route path='/bookings'>
             <BookingPage id={`${id}`} />
         </Route> */}
-        <Link to={{pathname:'/bookings', state:{id:{id}}}}>
-            <Button text="Book" handleClick={() => {console.log(id)}} />
+          <Link to={{ pathname: "/bookings", state: { id: { id } } }}>
+            <Button
+              text="Book"
+              handleClick={() => {
+                console.log(id);
+              }}
+            />
           </Link>
           <Button text="Next" handleClick={newRec} />
         </div>
