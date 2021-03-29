@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 import css from "./bookingPage.module.css";
 import BACKEND_URL_Bookings from "../../libs/config";
-// import DatePicker from "react-datepicker";
+
 
 function BookingPage({ id }) {
   const {
@@ -17,15 +17,14 @@ function BookingPage({ id }) {
     formState: { isSubmitting },
   } = useForm();
 
+  console.log(`Restaurant id is ${id}`);
+
   const [selectedDate, setSelectedDate] = useState(null);
 
-  // const BACKEND_URL = "https://localhost:5001/bookings";
-
   const onSubmit = (data) => {
-    console.log(data);
-    console.log(moment(selectedDate).format("DD/MM/YYYY"));
-
-    console.log(data.date);
+    // console.log(data);
+    // console.log(moment(selectedDate).format("DD/MM/YYYY"));
+    // console.log(data.date);
 
     // POST request using fetch inside useEffect React hook
     const requestOptions = {
@@ -47,10 +46,11 @@ function BookingPage({ id }) {
     // .then(data => console.log(data));
   };
 
-  function Book() {
-    console.log(id);
+  function Book({id}) {
+    console.log(`The id of this restaurant is ${id}`);
+   
     //alert("Cool you've booked");
-    alert(id);
+   
   }
 
   return (
@@ -119,7 +119,7 @@ function BookingPage({ id }) {
         disabled={isSubmitting}
         type="submit"
         onClick={() => {
-          Book();
+          Book({id});
         }}
       />
     </form>

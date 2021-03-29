@@ -1,15 +1,16 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import Table from './Table';
 import css from './reservationPage.module.css';
+import BACKEND_URL_Bookings from "../../libs/config";
 
 
 function ReservationPage() {
     const [data, setData] = useState([]);
-    const BACKEND_URL ="https://localhost:5001/bookings";
+    // const BACKEND_URL ="https://localhost:5001/bookings";
 
    useEffect(() => {
     async function getBookings() {
-      let response = await fetch(`${BACKEND_URL}`); 
+      let response = await fetch(`${BACKEND_URL_Bookings}`); 
       let data = await response.json();
       console.log(data);
       console.log(data.bookingDate)
