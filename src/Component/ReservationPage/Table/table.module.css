@@ -31,5 +31,16 @@ td {
     padding-top: 15px;
 }
 
+/* .titles {
+    display: flex;
+    justify-content: space-between;
+
+} */
+
+.individualHeadings {
+     display: inline-block;
+     
+    
+}
 
 

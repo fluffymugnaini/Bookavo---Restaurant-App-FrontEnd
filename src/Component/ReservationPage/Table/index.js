@@ -48,11 +48,12 @@ function Table({columns, data}){
     
     <table {...getTableProps()}>
       <thead className={css.tableHeading}>
+          <div className = {css.titles}>
         {headerGroups.map(headerGroup => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map(column => (
             //   <th {...column.getHeaderProps()}>{column.render("Header")}</th>
-             <div>
+             <div className={css.individualHeadings}>
             <th
   {...column.getHeaderProps(column.getSortByToggleProps())}
   className={
@@ -71,6 +72,7 @@ function Table({columns, data}){
 
           </tr>
         ))}
+        </div>
       </thead>
       <tbody {...getTableBodyProps()}>
         {rows.map((row, i) => {
