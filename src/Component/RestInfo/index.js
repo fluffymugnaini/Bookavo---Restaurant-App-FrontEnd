@@ -80,7 +80,7 @@ function RestInfo() {
         </ul>
 
         <div className={css.buttons}>
-          <Link to="/bookings">
+        <Link to={{pathname: '/bookings', state: [{id: 1}]}}>
             <Button text="Book" handleClick={() => {}} />
           </Link>
           <Button text="Next" handleClick={newRec} />
