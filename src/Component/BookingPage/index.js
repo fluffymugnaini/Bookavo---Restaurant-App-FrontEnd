@@ -1,16 +1,26 @@
-import React from "react";
-import { useForm } from "react-hook-form";
+import React, {useState} from "react";
+import { useForm, Controller } from "react-hook-form";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import moment from "moment";
+
 import css from './bookingPage.module.css';
 // import DatePicker from "react-datepicker";
 
 
 function BookingPage() {
-  const { register, handleSubmit, watch, errors, formState: { isSubmitting } } = useForm();
+  const { register, handleSubmit, control, watch, errors, formState: { isSubmitting } } = useForm();
+
+  const [selectedDate, setSelectedDate] = useState(null);
 
   const BACKEND_URL ="https://localhost:5001/bookings";
 
   const onSubmit = data => {
     console.log(data);
+    console.log(moment(selectedDate).format("DD/MM/YYYY"));
+
+    console.log(data.date);
+
     // POST request using fetch inside useEffect React hook
     const requestOptions = {
         method: 'POST',
@@ -32,7 +42,7 @@ function BookingPage() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-  <h1 className={css.h1}>Book a Table</h1>
+      <h1 className={css.h1}>Book a Table</h1>
       <label>Full Name:</label>
       <input name="fullName" ref={register({ required: true })} />
       {/* <DatePicker
@@ -47,11 +57,7 @@ function BookingPage() {
               timeCaption="time"
               dateFormat="MM-dd-yyyy h:mm"
             /> */}
-
-       <label>Date:</label>
-      <input name="date" ref={register({ required: true })} />
-       <label>Time:</label>
-      <input name="time" ref={register({ required: true })} />
+            
       <label>How many people?</label>
       <select name="number" ref={register({ required: true })}>
         <option value="">Select...</option>
@@ -65,6 +71,29 @@ function BookingPage() {
         <option value="8">8</option>
         <option value="8+">8+</option>
       </select>
+      {/* <label>Date:</label>
+      <input name="date" ref={register({ required: true })} /> */}
+      <section>
+        <label>Date:</label>
+        <Controller
+          as={DatePicker}
+          control={control}
+          valueName="selected"
+          selected={selectedDate}
+          onChange={([selected]) => {
+            setSelectedDate(selected);
+            return selected;
+          }}
+          dateFormat="DD/MM/YYYY"
+          placeholderText="Select Date"
+          name="date"
+          defaultValue={null}
+          ref={register({ required: true })}
+        />
+      </section>
+      
+      <label>Time:</label>
+      <input name="time" ref={register({ required: true })} />
       <label>Your Mobile Number</label>
       <input
         name="mobile"
@@ -76,6 +105,7 @@ function BookingPage() {
         name="email"
         ref={register({ required: true, pattern: /^\S+@\S+$/i })}
       />
+      
        <input disabled={isSubmitting} type="submit" />
     </form>
   );
