@@ -11,13 +11,20 @@ margin: 0 auto;
 
 }
 
-tr {
+.headings {
+    display: flex;
+    justify-content: space-around;
+}
+
+.rowData {
     display: flex;
     justify-content: space-between;
+    
 }
 
 .tableHeading {
     font-size: 1.8em;
+    text-align: left;
     
 }
 
@@ -42,10 +49,10 @@ td {
 
 } */
 
-.individualHeadings {
+/* .individualHeadings {
      display: inline-block;
      
     
-}
+} */
 
 

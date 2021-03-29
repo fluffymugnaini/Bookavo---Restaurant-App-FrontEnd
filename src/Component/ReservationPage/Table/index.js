@@ -48,9 +48,9 @@ function Table({columns, data}){
     
     <table {...getTableProps()}>
       <thead className={css.tableHeading}>
-          <div className = {css.titles}>
+          {/* <div className = {css.titles}> */}
         {headerGroups.map(headerGroup => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
+          <tr className={css.headings} {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map(column => (
             //   <th {...column.getHeaderProps()}>{column.render("Header")}</th>
              <div className={css.individualHeadings}>
@@ -72,13 +72,13 @@ function Table({columns, data}){
 
           </tr>
         ))}
-        </div>
+        {/* </div> */}
       </thead>
       <tbody {...getTableBodyProps()}>
         {rows.map((row, i) => {
           prepareRow(row);
           return (
-            <tr {...row.getRowProps()}>
+            <tr className={css.rowData} {...row.getRowProps()}>
               {row.cells.map(cell => {
                 return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
               })}
