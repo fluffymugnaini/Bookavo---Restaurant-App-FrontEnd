@@ -22,6 +22,7 @@ function ReservationPage() {
       () => [
           {
               Header: "Restaurant Name",
+              
               columns: [
                   {
                       Header: "Date",

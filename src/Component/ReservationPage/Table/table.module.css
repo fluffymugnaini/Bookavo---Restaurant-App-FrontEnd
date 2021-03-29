@@ -1,0 +1,35 @@
+table {
+border-collapse: collapse;
+width: 100%;
+background-color: white;
+color: black;
+margin-bottom: 20px;
+padding: 50px;
+width: fit-content;
+display: block;
+margin: 0 auto;
+
+}
+
+.tableHeading {
+    font-size: 1.8em;
+    
+}
+
+th{
+    padding: 15px;
+}
+
+th, td {
+text-align: center;
+
+}
+
+td {
+    font-size: 1.3em;
+    padding: 8px;
+    padding-top: 15px;
+}
+
+
+
