@@ -11,6 +11,11 @@ margin: 0 auto;
 
 }
 
+tr {
+    display: flex;
+    justify-content: space-between;
+}
+
 .tableHeading {
     font-size: 1.8em;
     
