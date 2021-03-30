@@ -7,7 +7,7 @@ import ReservationPage from '../ReservationPage';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import reducer, {INITIAL_REST} from '../../libs/restaurantReducer';
 import React, { useReducer, useState } from "react";
-
+import LandingPage from '../LandingPage';
 
 function App() {
   const [restaurant, dispatch] = useReducer(reducer, INITIAL_REST);
@@ -50,7 +50,7 @@ function App() {
                 <ReservationPage />
               </Route>
               <Route path="/">
-                <Header />
+                <LandingPage />
               </Route>
             </Switch>
 
