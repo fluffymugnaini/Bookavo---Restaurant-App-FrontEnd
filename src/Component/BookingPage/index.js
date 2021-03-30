@@ -94,12 +94,12 @@ function BookingPage({ id }) {
           selected={selectedDate}
           onChange={([selected]) => {
             setSelectedDate(selected);
-            return selected;
+            // return selected;
           }}
           dateFormat="DD/MM/YYYY"
           placeholderText="Select Date"
           name="date"
-          defaultValue={null}
+          defaultValue={selectedDate}
           ref={register({ required: true })}
         />
       </section>

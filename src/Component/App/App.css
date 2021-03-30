@@ -3,7 +3,8 @@
 
 
 body {
-  background: #160E2D;
-
+  
+background: rgb(36,37,41);
+background: linear-gradient(90deg, rgba(36,37,41,1) 19%, rgba(12,14,18,1) 48%);
     font-family: 'Quicksand', sans-serif;;
 }

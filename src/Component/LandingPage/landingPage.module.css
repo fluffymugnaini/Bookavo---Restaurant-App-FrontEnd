@@ -1,0 +1,18 @@
+.bgImage {
+width: 100%;
+display: block;
+margin: 0 auto;
+
+}
+
+.button {
+ 
+  font-size: 40em;
+  color: transparent;
+  background-color: transparent;
+ border: transparent;
+  position: absolute;
+  top: 250px;
+  left: 30%;
+  cursor: pointer;
+}
