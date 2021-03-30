@@ -21,7 +21,7 @@ function BookingPage({ id }) {
 
   const [selectedDate, setSelectedDate] = useState(null);
 
-  const onSubmit = (data) => {
+  const onSubmit = (data, {id}) => {
     // console.log(data);
     // console.log(moment(selectedDate).format("DD/MM/YYYY"));
     // console.log(data.date);
@@ -47,9 +47,8 @@ function BookingPage({ id }) {
   };
 
   function Book({id}) {
-    console.log(`The id of this restaurant is ${id}`);
-   
-    //alert("Cool you've booked");
+    console.log(`This id ( ${id} ) is logged when the submit button is pressed`);
+    alert(`Thank you for booking at Restaurant id number ${id}!`);
    
   }
 

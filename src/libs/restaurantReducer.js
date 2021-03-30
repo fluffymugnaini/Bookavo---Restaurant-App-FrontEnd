@@ -11,6 +11,8 @@ export const INITIAL_REST = {
   photoURL: "",
 };
 
+// can add action types but at the moment we only have one.
+
 function reducer(state, action) {
   switch (action.type) {
     case "REST":
