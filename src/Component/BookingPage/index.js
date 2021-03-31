@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import moment from "moment";
 import css from "./bookingPage.module.css";
 import BACKEND_URL_Bookings from "../../libs/config";
 import {BACKEND_URL_TimeSlots} from "../../libs/config";
 import {BACKEND_URL_Restaurants} from "../../libs/config";
+import DatePicker,{ registerLocale }from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import {enGB} from 'date-fns/esm/locale';
+registerLocale('enGB', enGB);
 
-function BookingPage({ id }) {
+
+function BookingPage({ restaurant, id }) {
+
   const {
     register,
     handleSubmit,
@@ -18,20 +21,15 @@ function BookingPage({ id }) {
     formState: { isSubmitting },
   } = useForm();
 
-  console.log(`Restaurant id is ${id}`);
-
-  const [selectedDate, setSelectedDate] = useState(null);
-
-  const [firstBookingSlot, setFirstBookingSlot] = useState(1700);
-  const [lastBookingSlot, setLastBookingSlot] = useState(2300);
-  const [restaurantCapacity, setRestaurantCapacity] = useState(0);
+  console.log(`Restaurant id from booking page is ${id}`);
+  
   const [bookedSlots, setBookedSlots] = useState([]);
 
-  const onSubmit = (data, {id}) => {
+  const onSubmit = (data, id) => {
     // console.log(data);
     // console.log(moment(selectedDate).format("DD/MM/YYYY"));
     // console.log(data.date);
-
+    console.log("restaurant id in submit form " + id);
     // POST request using fetch inside useEffect React hook
     const requestOptions = {
       method: "POST",
@@ -58,33 +56,24 @@ function BookingPage({ id }) {
    
   }
 
+  //GET THE SLOTS ALREADY BOOKED
   useEffect(() => {
-    async function getSelectedRestaurant() {
-      let response = await fetch(`${BACKEND_URL_Restaurants}/${id}`);
+    async function getBookedSlots() {
+      let response = await fetch(`${BACKEND_URL_TimeSlots}?restaurantId=${id}&date=${inputtedDate}`);
       let data = await response.json();
       console.log(data);
-      setFirstBookingSlot(parseInt(data.openingTimes));
-      setLastBookingSlot(parseInt(data.closingTimes-100));
-      setRestaurantCapacity(data.capacity);
-    }
-    getSelectedRestaurant()                                                                                                           
+      setBookedSlots(data);
+    }                                                                                                          
     getBookedSlots()
-  },[id]);
+  },[]);
 
-  //GET THE SLOTS ALREADY BOOKED
-  async function getBookedSlots() {
-    let response = await fetch(`${BACKEND_URL_TimeSlots}?restaurantId=${id}&date=${inputtedDate}`);
-    let data = await response.json();
-    //console.log(data);
-    setBookedSlots(data);
-  }
 
    //NEED TO GET THE BOOKING DATE OUT OF THE FORM BEFORE SUBMITTING ------------------------------IN PROGRESS
-  const inputtedDate = "2021-03-28"   //  = watch('date');   //DOES IT WORK? for now working with hardcoded date
-  const time = watch('time');
-  console.log("The watched time value " + time);
-   //NEED TO GET THE NO OF PEOPLE OUT OF THE FORM BEFORE SUBMITTING
-  const currentReservationPeople = 5;
+  const inputtedDate = "2021-03-29"   //  = watch('date');   //DOES IT WORK? for now working with hardcoded date
+  // const time = watch('time');
+  //console.log("The watched time value " + time);
+  //NEED TO GET THE NO OF PEOPLE OUT OF THE FORM BEFORE SUBMITTING
+  // const currentReservationPeople = 5;
  
   // NEED TO GENERATE ARRAY WITH 1H SLOTS BETWEEN THE OPENING TIME AND CLOSING TIME
   function generateAllPossibleBookingSlots(start, end, step = 100) {
@@ -92,7 +81,8 @@ function BookingPage({ id }) {
     return (Array(len).fill().map((_, idx) => start + (idx * step)));
   }
   
-  var allRestaurantSlots = generateAllPossibleBookingSlots(firstBookingSlot, lastBookingSlot, 100);
+  var allRestaurantSlots = generateAllPossibleBookingSlots(parseInt(restaurant.openingTimes), (parseInt(restaurant.closingTimes)-100), 100);
+
   var allRestaurantTimeSlots = [];
   for (let i=0; i<allRestaurantSlots.length; i++){
     var slot = allRestaurantSlots[i].toString();
@@ -100,7 +90,7 @@ function BookingPage({ id }) {
     allRestaurantTimeSlots.push(splicedSlot)
   }
 
-  //console.log(allRestaurantTimeSlots);
+  console.log(allRestaurantTimeSlots);
   
 
   // NEED TO CHECK TO GET THE SLOTS BOOKED
@@ -129,23 +119,21 @@ function BookingPage({ id }) {
       <input name="date" ref={register({ required: true })} /> */}
       <section>
         <label>Date:</label>
-        <Controller
-          as={DatePicker}
+        <Controller 
+          name="date"
           control={control}
-          valueName="selected"
-          selected={selectedDate}
-          onChange={([selected]) => {
-            setSelectedDate(selected);
-            return selected;
-          }}
-          dateFormat="DD/MM/YYYY"
-          placeholderText="Select Date"
-            name="date"
-            defaultValue={selectedDate}     //null initially
+          render={(props) => (
+            <DatePicker 
+              placeholderText="Select Date"
+              onChange={(e) => props.onChange(e)}
+              selected={props.value}
+              dateFormat="dd-MM-yyyy"
+              locale='enGB'
+            />
+          )}
           ref={register({ required: true })}
         />
       </section>
-
       <label>Time:</label>
       {/* <input name="time" ref={register({ required: true })} /> */}
       <select name="time" ref={register({ required: true })}>

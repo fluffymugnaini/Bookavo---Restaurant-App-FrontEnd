@@ -11,8 +11,10 @@ import LandingPage from '../LandingPage';
 
 function App() {
   const [restaurant, dispatch] = useReducer(reducer, INITIAL_REST);
-  const [id, setId] = useState(1);
-  console.log(`Id is ${id}`);
+  const [id, setId] = useState(0);  //this is not the restaurant id, is the index position of the restaurant withing the array containing multiple restaurants of the same cuisine
+
+  console.log(`Index is ${id}`); //it was restaurant id before
+
 
    function newRec() {
     //setId(Math.floor(Math.random() * 4) + 1);
@@ -40,9 +42,9 @@ function App() {
               </ul>
             </nav>
 
-<Switch>
+            <Switch>
               <Route path="/bookings">
-                <BookingPage id={id}/>
+                <BookingPage id={restaurant.id} restaurant={restaurant}/>
               </Route>
               <Route path="/recs">
                 <RestaurantInfo restaurant={restaurant} dispatch={dispatch} id={id} newRec={newRec}/>
