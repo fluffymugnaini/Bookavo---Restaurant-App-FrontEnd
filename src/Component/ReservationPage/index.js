@@ -10,7 +10,7 @@ function ReservationPage() {
 
    useEffect(() => {
     async function getBookings() {
-      let response = await fetch(`${BACKEND_URL_Bookings}`); 
+      let response = await fetch(`${BACKEND_URL_Bookings}/1`); //get bookings by restaurant id - hardcoded at the moment but won't be if we sort out Auth0
       let data = await response.json();
       console.log(data);
       console.log(data.bookingDate)
@@ -22,7 +22,7 @@ function ReservationPage() {
   const columns = useMemo(
       () => [
           {
-              Header: "Restaurant Name",
+              Header: `Restaurant Name`,    
               
               columns: [
                   {
