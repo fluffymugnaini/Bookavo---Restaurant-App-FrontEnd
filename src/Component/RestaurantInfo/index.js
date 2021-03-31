@@ -6,36 +6,11 @@ import { Link, Route } from "react-router-dom";
 // import BookingPage from "../BookingPage";
 import {BACKEND_URL_Restaurants} from "../../libs/config";
 
-// function reducer(state, action) {
-//   switch (action.type) {
-//     case "REST":
-//       return action.payload;
-//     default:
-//       return state;
-//   }
-// }
-
-// const INITIAL_REST = {
-//   restaurantName: "",
-//   description: "",
-//   openingTimes: "",
-//   closingTimes: "",
-//   phoneNumber: "",
-//   addressLine1: "",
-//   area: "",
-//   postcode: "",
-//   websiteURL: "",
-//   photoURL: "",
-// };
-
-
-// const BACKEND_URL = "https://localhost:5001/restaurants";
-
-function RestaurantInfo({restaurant, dispatch, id, newRec}) {
+function RestaurantInfo({restaurant, dispatch, id, newRec, cuisine}) {
   // const [restaurant, dispatch] = useReducer(reducer, INITIAL_REST);
   // const [id, setId] = useState(1);
  
-  let cuisine = "Italy";  //just for testing, we need to get the cuisine passed down from the landing page
+  // let cuisine = "Italy";  //just for testing, we need to get the cuisine passed down from the landing page
 
   useEffect(() => {
     async function getRestaurants() {

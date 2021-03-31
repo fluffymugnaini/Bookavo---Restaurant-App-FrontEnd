@@ -12,7 +12,7 @@ import LandingPage from '../LandingPage';
 function App() {
   const [restaurant, dispatch] = useReducer(reducer, INITIAL_REST);
   const [id, setId] = useState(0);  //this is not the restaurant id, is the index position of the restaurant withing the array containing multiple restaurants of the same cuisine
-
+  const [cuisine, setCuisine] = useState('Italy');
   console.log(`Index is ${id}`); //it was restaurant id before
 
 
@@ -47,13 +47,13 @@ function App() {
                 <BookingPage id={restaurant.id} restaurant={restaurant}/>
               </Route>
               <Route path="/recs">
-                <RestaurantInfo restaurant={restaurant} dispatch={dispatch} id={id} newRec={newRec}/>
+                <RestaurantInfo restaurant={restaurant} dispatch={dispatch} id={id} newRec={newRec} cuisine={cuisine}/>
               </Route>
               <Route path="/reservations">
                 <ReservationPage />
               </Route>
               <Route path="/">
-                <LandingPage />
+                <LandingPage cuisine={cuisine} setCuisine={setCuisine}/>
               </Route>
             </Switch>
 
