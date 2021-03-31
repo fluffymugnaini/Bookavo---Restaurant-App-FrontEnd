@@ -6,48 +6,26 @@ import { Link, Route } from "react-router-dom";
 // import BookingPage from "../BookingPage";
 import {BACKEND_URL_Restaurants} from "../../libs/config";
 
-// function reducer(state, action) {
-//   switch (action.type) {
-//     case "REST":
-//       return action.payload;
-//     default:
-//       return state;
-//   }
-// }
-
-// const INITIAL_REST = {
-//   restaurantName: "",
-//   description: "",
-//   openingTimes: "",
-//   closingTimes: "",
-//   phoneNumber: "",
-//   addressLine1: "",
-//   area: "",
-//   postcode: "",
-//   websiteURL: "",
-//   photoURL: "",
-// };
-
-
-// const BACKEND_URL = "https://localhost:5001/restaurants";
-
-function RestaurantInfo({restaurant, dispatch, id, newRec}) {
+function RestaurantInfo({restaurant, dispatch, id, newRec, cuisine}) {
   // const [restaurant, dispatch] = useReducer(reducer, INITIAL_REST);
   // const [id, setId] = useState(1);
  
-  let cuisine = "Italy";  //just for testing, we need to get the cuisine passed down from the landing page
+  // let cuisine = "Italy";  //just for testing, we need to get the cuisine passed down from the landing page
 
   useEffect(() => {
     async function getRestaurants() {
       let response = await fetch(`${BACKEND_URL_Restaurants}?cuisine=${cuisine}`);
       let data = await response.json();
       //console.log(data[id]);
+      //console.log(data[id].id)
       dispatch({ type: "REST", payload: data[id]});
-      console.log(restaurant);
+      //console.log( restaurant);
     }
     getRestaurants();
   }, [id]);
 
+  console.log(restaurant);
+  console.log("Restaurant id is " + restaurant.id);
   // useEffect(() => {
   //   async function getRestaurants() {
   //     let response = await fetch(`${BACKEND_URL_Restaurants}/${id}`);
@@ -90,11 +68,12 @@ function RestaurantInfo({restaurant, dispatch, id, newRec}) {
           {/* <Route path='/bookings'>
             <BookingPage id={`${id}`} />
         </Route> */}
-          <Link to={{ pathname: "/bookings", state: { id: { id } } }}>
+          {/* <Link to={{ pathname: "/bookings", state: { id: { id } } }}> */}
+          <Link to={{ pathname: "/bookings", state: { id: restaurant.id, restaurant: restaurant  } }}>
             <Button
               text="Book"
               handleClick={() => {
-                console.log(id);
+                console.log("when clicking on book " + restaurant.id);
               }}
             />
           </Link>

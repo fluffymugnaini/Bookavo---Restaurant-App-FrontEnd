@@ -1,12 +1,14 @@
-.header {
-    text-align: left;
+ .header {
+    /* text-align: left;
     font-weight: 100;
   color: white;
-  margin-left: 10%;
-  border-bottom: 1px solid rgb(79, 98, 148);
+  margin-left: 10%; */
+  display: flex;
+  justify-content: center;
+  border-bottom: 5px solid rgb(79, 98, 148);
 }
 
-.title {
+/* .title {
     font-size: 5em;
 }
 
@@ -14,4 +16,10 @@
     font-size: 0.3em;
     color: #ff6d72a2;
     
+}  */
+
+.logo {
+    display: block;
+    margin: 3%;
 }
+

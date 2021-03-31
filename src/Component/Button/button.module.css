@@ -1,18 +1,62 @@
-.button {
+/* .button {
   font-size: 2.5em;
- 
+ font-family: inherit;
   margin-bottom: 40px;
   margin-left: 5px;
   text-align: center;
   display: inline-block;
-  padding: 10px 150px;
+  padding: 15px 90px;
   background-color: white;
+
 }
 
 .button:hover {
   cursor: pointer;
-  background-color: #C3A384;
+  background-color: rgb(79, 98, 148);
   color: white;
   transition: ease-in-out;
   transition-duration: 0.5s;
+} */
+
+.button
+ {
+  background: transparent;
+  color: white;
+  text-transform: uppercase;
+  border-color: rgba(255, 255, 255, 0.521);
+  margin-bottom: 40px;
+  margin-left: 5px;
+  padding: 15px 90px;
+  font-size: 2em;
+  font-weight: 100;
+  letter-spacing: 10px;
+ 
+}
+
+.button {
+  transition: 0.3s all;
+  transform: translateY(3px);
+  
+  opacity: 0.8;
+}
+
+.button:hover {
+  background-color: rgb(57, 58, 65);
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+}
+
+.buttons {
+    font-size: 2em;
+/* background-size: 100%;
+    background: url(http://www.flags-and-anthems.com/media/flags/flagge-italien.gif) no-repeat; */
+    color: white;
+    background-color: transparent;
+    border-color: rgba(255, 255, 255, 0.377);
+}
+
+.buttons:hover {
+    background-color: rgb(57, 58, 65);
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
 }
