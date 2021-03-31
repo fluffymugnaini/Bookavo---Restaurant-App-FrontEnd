@@ -25,31 +25,30 @@ function BookingPage({ restaurant, id }) {
   
   const [bookedSlots, setBookedSlots] = useState([]);
 
-  const onSubmit = (data, id) => {
-    // console.log(data);
-    // console.log(moment(selectedDate).format("DD/MM/YYYY"));
-    // console.log(data.date);
-    console.log("restaurant id in submit form " + id);
-    // POST request using fetch inside useEffect React hook
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        RestaurantID: 1,            //!!!!!!!!!!!!!!!!!! Id still hardcoded, at the moment doesn't work if passed down.
-        CustomerName: data.fullName,
-        BookingDate: data.date,
-        BookingTime: data.time,
-        NumberOfPeople: parseInt(data.number),
-        CustomerMobile: data.mobile,
-        CustomerEmail: data.email,
-      }),
+    const onSubmit = (data) => {
+      postBooking(data);
+      Book({id});
+      };
+
+    const postBooking = (formData) => {
+      const requestOptions = {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            RestaurantID: id,            
+            CustomerName: formData.fullName,
+            BookingDate: formData.date,
+            BookingTime: formData.time,
+            NumberOfPeople: parseInt(formData.number),
+            CustomerMobile: formData.mobile,
+            CustomerEmail: formData.email,
+          }),
     };
-
-    fetch(`${BACKEND_URL_Bookings}`, requestOptions);
-    // .then(response => response.json())
-    // .then(data => console.log(data));
-  };
-
+      fetch(`${BACKEND_URL_Bookings}`, requestOptions);
+  }
+    
+  //!!! FUNCTION IS JUST TEMPORARY SHOWING WHEN THE DATA IS SUBMITTED
+  //This can be used instead to redirect to the booking confirmation page where we thank them for the booking and give them the latest covid safety info for restaurants
   function Book({id}) {
     console.log(`This id ( ${id} ) is logged when the submit button is pressed`);
     alert(`Thank you for booking at Restaurant id number ${id}!`);
@@ -115,8 +114,7 @@ function BookingPage({ restaurant, id }) {
         <option value="8">8</option>
         <option value="8+">8+</option>
       </select>
-      {/* <label>Date:</label>
-      <input name="date" ref={register({ required: true })} /> */}
+     
       <section>
         <label>Date:</label>
         <Controller 
@@ -135,7 +133,6 @@ function BookingPage({ restaurant, id }) {
         />
       </section>
       <label>Time:</label>
-      {/* <input name="time" ref={register({ required: true })} /> */}
       <select name="time" ref={register({ required: true })}>
       <option value="">Select...</option>
         {allRestaurantTimeSlots.map((item) =>{
@@ -154,7 +151,6 @@ function BookingPage({ restaurant, id }) {
         disabled={isSubmitting}
         type="submit"
         onClick={() => {
-          Book({id});
         }}
       />
     </form>
