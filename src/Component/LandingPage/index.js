@@ -14,10 +14,14 @@ function LandingPage(props) {
     }
 return (
 <div className={css.bg}>
-<img src={bookavobackground2} className={css.bgImage} alt="dark bg image with wok of shrimp noodles"></img>
+
 {/* <button onClick={onClick} className={css.button}>BK</button> */}
-<div className={css.paragraph}>
-<img src={bookavologo} className={css.logo}></img>   
+<div className={css.content}>
+<img src={bookavologo} className={css.logo}></img>
+<div className={css.tagline}>
+<p className = {css.tag}>EAT AROUND THE WORLD,</p>
+<p className = {css.tag}>IN YOUR CITY</p>
+</div>   
 <p className={css.p}>Choose your cuisine:</p>
 <div className={css.buttons}>
 <CountryButton onClick={onClick} text='ITALY' />
