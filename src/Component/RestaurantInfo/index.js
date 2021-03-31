@@ -42,12 +42,15 @@ function RestaurantInfo({restaurant, dispatch, id, newRec}) {
       let response = await fetch(`${BACKEND_URL_Restaurants}?cuisine=${cuisine}`);
       let data = await response.json();
       //console.log(data[id]);
+      //console.log(data[id].id)
       dispatch({ type: "REST", payload: data[id]});
-      console.log(restaurant);
+      //console.log( restaurant);
     }
     getRestaurants();
   }, [id]);
 
+  console.log(restaurant);
+  console.log("Restaurant id is " + restaurant.id);
   // useEffect(() => {
   //   async function getRestaurants() {
   //     let response = await fetch(`${BACKEND_URL_Restaurants}/${id}`);
@@ -90,11 +93,12 @@ function RestaurantInfo({restaurant, dispatch, id, newRec}) {
           {/* <Route path='/bookings'>
             <BookingPage id={`${id}`} />
         </Route> */}
-          <Link to={{ pathname: "/bookings", state: { id: { id } } }}>
+          {/* <Link to={{ pathname: "/bookings", state: { id: { id } } }}> */}
+          <Link to={{ pathname: "/bookings", state: { id: restaurant.id, restaurant: restaurant  } }}>
             <Button
               text="Book"
               handleClick={() => {
-                console.log(id);
+                console.log("when clicking on book " + restaurant.id);
               }}
             />
           </Link>
