@@ -15,7 +15,8 @@ function App() {
   console.log(`Id is ${id}`);
 
    function newRec() {
-    setId(Math.floor(Math.random() * 4) + 1);
+    //setId(Math.floor(Math.random() * 4) + 1);
+    setId(Math.floor(Math.random() * 2));  // for use with cuisine, with two restaurants per cuisine type
     console.log(`Button id is ${id}`);
   }
 

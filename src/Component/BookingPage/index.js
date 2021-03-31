@@ -37,7 +37,7 @@ function BookingPage({ id }) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        RestaurantID: 1,            //!!!!!!!!!!!!!!!!!! Id still hardcoded, at the moment does;t work if passed down.
+        RestaurantID: 1,            //!!!!!!!!!!!!!!!!!! Id still hardcoded, at the moment doesn't work if passed down.
         CustomerName: data.fullName,
         BookingDate: data.date,
         BookingTime: data.time,
