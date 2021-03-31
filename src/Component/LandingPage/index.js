@@ -1,5 +1,6 @@
 import React from 'react';
-import ShrimpBookavo from '../../../src/ShrimpBookavo.png';
+import bookavobackground2 from '../../../src/bookavobackground2.png';
+import bookavologo from '../../../src/bookavologo.png'
 import css from './landingPage.module.css';
 import {withRouter, useHistory} from 'react-router-dom';
 import CountryButton from './CountryButton';
@@ -13,9 +14,10 @@ function LandingPage(props) {
     }
 return (
 <div className={css.bg}>
-<img src={ShrimpBookavo} className={css.bgImage} alt="dark bg image with wok of shrimp noodles"></img>
+<img src={bookavobackground2} className={css.bgImage} alt="dark bg image with wok of shrimp noodles"></img>
 {/* <button onClick={onClick} className={css.button}>BK</button> */}
 <div className={css.paragraph}>
+<img src={bookavologo} className={css.logo}></img>   
 <p className={css.p}>Choose your cuisine:</p>
 <div className={css.buttons}>
 <CountryButton onClick={onClick} text='ITALY' />
