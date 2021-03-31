@@ -7,6 +7,7 @@ import {BACKEND_URL_Restaurants} from "../../libs/config";
 import DatePicker,{ registerLocale }from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {enGB} from 'date-fns/esm/locale';
+import Header from '../Header';
 registerLocale('enGB', enGB);
 
 
@@ -98,6 +99,8 @@ function BookingPage({ restaurant, id }) {
 
 
   return (
+    <>
+    <Header/>
     <form onSubmit={handleSubmit(onSubmit)}>
       <h1 className={css.h1}>Book a Table</h1>
       <label>Full Name:</label>
@@ -158,6 +161,7 @@ function BookingPage({ restaurant, id }) {
         }}
       />
     </form>
+    </>
   );
 }
 

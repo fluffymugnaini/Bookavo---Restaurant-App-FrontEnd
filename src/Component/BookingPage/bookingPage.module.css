@@ -2,7 +2,7 @@
 
 form {
   max-width: 500px;
-  margin: 5% auto;
+  margin: 0 auto;
 }
 
 .h1 {
@@ -16,7 +16,7 @@ form {
 .form {
   background: #0e101c;
   max-width: 400px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 
 p {
