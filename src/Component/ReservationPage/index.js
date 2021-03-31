@@ -1,53 +1,59 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import Table from './Table';
 import css from './reservationPage.module.css';
+import BACKEND_URL_Bookings from "../../libs/config";
 
 
 function ReservationPage() {
     const [data, setData] = useState([]);
-    const BACKEND_URL ="https://localhost:5001/bookings";
+    // const BACKEND_URL ="https://localhost:5001/bookings";
 
    useEffect(() => {
     async function getBookings() {
-      let response = await fetch(`${BACKEND_URL}`); 
+      let response = await fetch(`${BACKEND_URL_Bookings}/1`); //get bookings by restaurant id - hardcoded at the moment but won't be if we sort out Auth0
       let data = await response.json();
       console.log(data);
       console.log(data.bookingDate)
-    //   setData(data)
+      setData(data)
     }
     getBookings();
   }, []); 
 
-//   const columns = useMemo(
-//       () => [
-//           {
-//               Header: "Restaurant Name",
-//               columns: [
-//                   {
-//                       Header: "Date",
-//                       accessor: "0[bookingDate]"
-//                   },
-//                   {
-//                       Header: "Time",
-//                       accessor: "data.bookingTime"
-//                   },
-//                   {
-//                       Header: "Number of People",
-//                       accessor: "data"
-//                   },
-//                   {
-//                       Header: "Reserver Name",
-//                       accessor: "data.fullName"
-//                   },
-//                   {
-//                       Header: "Contact Details",
-//                       accessor: "data.email"
-//                   },
-//               ]
-//           }
-//       ],
-//       []
-//   )
+  const columns = useMemo(
+      () => [
+          {
+              Header: `Restaurant Name`,    
+              
+              columns: [
+                  {
+                      Header: "Date",
+                      accessor: "bookingDate"
+                  },
+                  {
+                      Header: "Time",
+                      accessor: "bookingTime"
+                  },
+                  {
+                      Header: "Number of People",
+                      accessor: "numberOfPeople"
+                  },
+                  {
+                      Header: "Reserver Name",
+                      accessor: "customerName"
+                  },
+                  {
+                      Header: "Email",
+                      accessor: "customerEmail"
+                  },
+                  {
+                      Header: "Mobile",
+                      accessor: "customerMobile"
+                  },
+              ]
+          }
+      ],
+      []
+  )
 
  
 
@@ -56,7 +62,7 @@ function ReservationPage() {
                 <h1>Reservation Page</h1>
              
               
-                {/* <Table columns={columns} data={data} /> */}
+                <Table columns={columns} data={data} />
             </div>
         )
     }

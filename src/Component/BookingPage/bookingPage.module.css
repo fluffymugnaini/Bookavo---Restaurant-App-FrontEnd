@@ -20,12 +20,12 @@ form {
 }
 
 p {
-  color: #FF6D72;
+  color: white;
 }
 
 p::before {
   display: inline;
-  content: "⚠ ";
+  /* content: "⚠ "; */
 }
 
 textarea,
