@@ -7,11 +7,16 @@ import {BACKEND_URL_Restaurants} from "../../libs/config";
 import DatePicker,{ registerLocale }from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {enGB} from 'date-fns/esm/locale';
+import { format, startOfDay} from 'date-fns';
+
 import Header from '../Header';
+import {  useHistory } from "react-router-dom";
+
 registerLocale('enGB', enGB);
 
 
 function BookingPage({ restaurant, id }) {
+//!! On page refresh redirect to the landing page or make sure that the restaurant and id data is not lost on reload  - check maybe local storage
 
   const {
     register,
@@ -67,13 +72,28 @@ function BookingPage({ restaurant, id }) {
     getBookedSlots()
   },[]);
 
+  console.log(bookedSlots);
 
-   //NEED TO GET THE BOOKING DATE OUT OF THE FORM BEFORE SUBMITTING ------------------------------IN PROGRESS
-  const inputtedDate = "2021-03-29"   //  = watch('date');   //DOES IT WORK? for now working with hardcoded date
-  // const time = watch('time');
-  //console.log("The watched time value " + time);
+
+   //!!!!NEED TO GET THE BOOKING DATE OUT OF THE FORM BEFORE SUBMITTING ------------------------------IN PROGRESS
+  const inputtedDate = "2021-03-31"   //  = watch('date');   //DOES IT WORK? for now working with hardcoded date
+
+  const dateStringDB = "2021-03-31T23:00:00.000Z";
+  console.log(dateStringDB.slice(0,10));
+  
+  const date = watch('date');
+  console.log("The watched date value " + date);
+  //Fri Apr 02 2021 00:00:00 GMT+0100 (British Summer Time)
+
+  //console.log(date.toString());
+
+  // Convert string '2014-02-11T11:30:30' to date:
+  //var result = parseISO('2014-02-11T11:30:30')
+  //=> Tue Feb 11 2014 11:30:30
+
   //NEED TO GET THE NO OF PEOPLE OUT OF THE FORM BEFORE SUBMITTING
-  // const currentReservationPeople = 5;
+  const currentReservationNoOfPeople = parseInt(watch('number'));
+  console.log("current reservation no people " + currentReservationNoOfPeople);
  
   // NEED TO GENERATE ARRAY WITH 1H SLOTS BETWEEN THE OPENING TIME AND CLOSING TIME
   function generateAllPossibleBookingSlots(start, end, step = 100) {
@@ -90,13 +110,27 @@ function BookingPage({ restaurant, id }) {
     allRestaurantTimeSlots.push(splicedSlot)
   }
 
-  console.log(allRestaurantTimeSlots);
-  
-
   // NEED TO CHECK TO GET THE SLOTS BOOKED
   // SOME WAY TO MAP OVER THE SLOTS ARRAY AND CHECK WHAT THEIR OCCUPANCY INCLUDING THE NEW RESERVATION WOULD BE --> IF OVER RESTAURANT CAPACITY DO NOT INCLUDE IN THE FILTERED ARRAY
+  
+  const filteredTimeSlots = allRestaurantTimeSlots.filter((ts)=>{
+    if (bookedSlots.some((booking)=>{ return booking.timeSlot === ts})) {
+      return bookedSlots.some((booking)=>{
+        return booking.timeSlot === ts && (booking.currentSlotOccupancy+currentReservationNoOfPeople) < restaurant.capacity;  
+      })}
+    else {
+      return true;
+    }
+  })
 
+  console.log(filteredTimeSlots);
 
+  // const result = allRestaurantTimeSlots.filter((ts)=>{
+  //   return bookedSlots.some((booking)=>{
+  //     return (booking.timeSlot === ts && booking.currentSlotOccupancy < restaurant.capacity);   //this only leaves the slots that have a reservation, but under the max capacity
+  //   })
+  // })
+  
   return (
     <>
     <Header/>
@@ -130,6 +164,7 @@ function BookingPage({ restaurant, id }) {
               selected={props.value}
               dateFormat="dd-MM-yyyy"
               locale='enGB'
+              minDate={startOfDay(new Date())}    //set earliest date available to book to today -- startOfDay vs startOfToday
             />
           )}
           ref={register({ required: true })}
@@ -138,7 +173,11 @@ function BookingPage({ restaurant, id }) {
       <label>Time:</label>
       <select name="time" ref={register({ required: true })}>
       <option value="">Select...</option>
-        {allRestaurantTimeSlots.map((item) =>{
+        {/* {allRestaurantTimeSlots.map((item) =>{
+                 return <option value={item.toString()}>{item}</option>
+        })} */}
+
+        {filteredTimeSlots.map((item) =>{
                  return <option value={item.toString()}>{item}</option>
         })}
       </select>
