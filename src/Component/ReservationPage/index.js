@@ -8,7 +8,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 // const { user } = useAuth0();
 // const auth0id = user.sub;
 
-
 function ReservationPage() {
     const [data, setData] = useState([]);
     // const BACKEND_URL ="https://localhost:5001/bookings";

@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller, useWatch } from "react-hook-form";
 import css from "./bookingPage.module.css";
 import BACKEND_URL_Bookings from "../../libs/config";
 import {BACKEND_URL_TimeSlots} from "../../libs/config";
 import {BACKEND_URL_Restaurants} from "../../libs/config";
 import DatePicker,{ registerLocale }from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import {enGB} from 'date-fns/esm/locale';
-import { format, startOfDay} from 'date-fns';
+//import {enGB} from 'date-fns/esm/locale';
+import { format, startOfDay, parseISO} from 'date-fns';
 import Header from '../Header';
 import { withRouter, useHistory } from "react-router-dom";
 
-registerLocale('enGB', enGB);
+
+//registerLocale('enGB', enGB);
 
 
 function BookingPage({ restaurant, id }, props) {
@@ -32,6 +33,20 @@ function BookingPage({ restaurant, id }, props) {
     formState: { isSubmitting },
   } = useForm();
 
+  //NEED TO GET THE DATE & NO OF PEOPLE OUT OF THE FORM BEFORE SUBMITTING
+  const watchedDate = useWatch({
+    control,
+    name: "date",
+    defaultValue: "2021-01-04"});
+
+  const watchedNoOfPeople = useWatch({
+    control,
+    name: "number",
+    defaultValue: "0"});
+
+  console.log("the date from use watch " + watchedDate);
+  console.log("the noPeople from use watch " + watchedNoOfPeople);
+
   console.log(`Restaurant id from booking page is ${id}`);
 
   const [bookedSlots, setBookedSlots] = useState([]);
@@ -43,13 +58,14 @@ function BookingPage({ restaurant, id }, props) {
   };
 
   const postBooking = (formData) => {
+    console.log(formData.date)
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         RestaurantID: id,
         CustomerName: formData.fullName,
-        BookingDate: formData.date,
+        BookingDate: formatDate(formData.date),
         BookingTime: formData.time,
         NumberOfPeople: parseInt(formData.number),
         CustomerMobile: formData.mobile,
@@ -71,38 +87,71 @@ function BookingPage({ restaurant, id }, props) {
   useEffect(() => {
     async function getBookedSlots() {
       let response = await fetch(
-        `${BACKEND_URL_TimeSlots}?restaurantId=${id}&date=${inputtedDate}`
+        `${BACKEND_URL_TimeSlots}?restaurantId=${id}&date=${formatDate(watchedDate).toString()}` //
       );
       let data = await response.json();
       console.log(data);
       setBookedSlots(data);
     }                                                                                                          
     getBookedSlots()
-  },[]);
+  },[watchedDate]);
+
 
   console.log(bookedSlots);
 
-   //!!!!NEED TO GET THE BOOKING DATE OUT OF THE FORM BEFORE SUBMITTING ------------------------------IN PROGRESS
-  const inputtedDate = "2021-04-01"   //  = watch('date');   //DOES IT WORK? for now working with hardcoded date
+  //Format the date to match the match the format required for the 
+  function formatDate(date){
+    if (date !== undefined){
 
-  const dateStringDB = "2021-03-31T23:00:00.000Z";
-  console.log(dateStringDB.slice(0,10));
+      var stringDate = date.toString(); //eg Fri Apr 02 2021 00:00:00 GMT+0100 (British Summer Time)
+      var yearString = stringDate.slice(11,15); //year string eg 2021
+      var monthString = stringDate.slice(4,7);  //month string eg Jan
+      var dayString = stringDate.slice(8,10);  //day string eg 14
   
-  const date = watch('date');
-  console.log("The watched date value " + date);
-  //Fri Apr 02 2021 00:00:00 GMT+0100 (British Summer Time)
-
-  //console.log(date.toString());
-
-  // Convert string '2014-02-11T11:30:30' to date:
-  //var result = parseISO('2014-02-11T11:30:30')
-  //=> Tue Feb 11 2014 11:30:30
-
-  //NEED TO GET THE NO OF PEOPLE OUT OF THE FORM BEFORE SUBMITTING
-  const currentReservationNoOfPeople = parseInt(watch('number'));
-  console.log("current reservation no people " + currentReservationNoOfPeople);
-   
-
+      switch (monthString)
+        {
+          case "Jan":
+            monthString = "01";
+            break;
+          case "Feb":
+            monthString = "02";
+            break;
+          case "Mar":
+            monthString = "03";
+            break;
+          case "Apr":
+            monthString = "04";
+            break;
+          case "May":
+            monthString = "05";
+            break;
+          case "Jun":
+            monthString = "06";
+            break;      
+          case "Jul":
+            monthString = "07";
+            break;
+          case "Aug":
+            monthString = "08";
+            break;
+          case "Sep":
+            monthString = "09";
+            break;
+          case "Oct":
+            monthString = "10";
+            break;
+          case "Nov":
+            monthString = "11";
+            break;
+          default: 
+            monthString = "12";
+      }
+  
+      var fullDate= dayString.concat(`-${monthString}-${yearString}`); //concatenated date format DD/MM/YYYY
+      console.log(fullDate);
+      return fullDate;
+    }
+  }
   
   // NEED TO GENERATE ARRAY WITH 1H SLOTS BETWEEN THE OPENING TIME AND CLOSING TIME
   function generateAllPossibleBookingSlots(start, end, step = 100) {
@@ -125,13 +174,11 @@ function BookingPage({ restaurant, id }, props) {
     allRestaurantTimeSlots.push(splicedSlot);
   }
 
-  // CHECK OVER THE ARRAY WITH ALL THE SLOTS AND 
-  // SOME WAY TO MAP OVER THE SLOTS ARRAY AND CHECK WHAT THEIR OCCUPANCY INCLUDING THE NEW RESERVATION WOULD BE --> IF OVER RESTAURANT CAPACITY DO NOT INCLUDE IN THE FILTERED ARRAY
-  
+  // CHECK OVER THE ARRAY WITH ALL THE SLOTS AND COMPARE AGAINST THE SLOTS THAT ALREADY HAVE BOOKINGS
   const filteredTimeSlots = allRestaurantTimeSlots.filter((ts)=>{
     if (bookedSlots.some((booking)=>{ return booking.timeSlot === ts})) {
       return bookedSlots.some((booking)=>{
-        return booking.timeSlot === ts && (booking.currentSlotOccupancy+currentReservationNoOfPeople) < restaurant.capacity;  
+        return booking.timeSlot === ts && (booking.currentSlotOccupancy+parseInt(watchedNoOfPeople)) < restaurant.capacity;  
       })}
     else {
       return true;
@@ -172,7 +219,8 @@ function BookingPage({ restaurant, id }, props) {
               onChange={(e) => props.onChange(e)}
               selected={props.value}
               dateFormat="dd-MM-yyyy"
-              locale='enGB'
+              defaultValue={startOfDay(new Date())} 
+              // locale='enGB'
               minDate={startOfDay(new Date())}    //set earliest date available to book to today -- startOfDay vs startOfToday
             />
           )}
@@ -182,13 +230,13 @@ function BookingPage({ restaurant, id }, props) {
       <label>Time:</label>
       <select name="time" ref={register({ required: true })}>
       <option value="">Select...</option>
-        {allRestaurantTimeSlots.map((item) =>{
-                 return <option value={item.toString()}>{item}</option>
-        })}
-
-        {/* {filteredTimeSlots.map((item) =>{
+        {/* {allRestaurantTimeSlots.map((item) =>{
                  return <option value={item.toString()}>{item}</option>
         })} */}
+
+        {filteredTimeSlots.map((item) =>{
+                 return <option value={item.toString()}>{item}</option>
+        })}
       </select>
       <label>Your Mobile Number</label>
       <input name="mobile" type="mobile" ref={register({ required: true })} />
