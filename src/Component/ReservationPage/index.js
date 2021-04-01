@@ -5,8 +5,8 @@ import css from './reservationPage.module.css';
 import BACKEND_URL_Bookings from "../../libs/config";
 import { useAuth0 } from "@auth0/auth0-react";
 
-const { user } = useAuth0();
-const auth0id = user.sub;
+// const { user } = useAuth0();
+// const auth0id = user.sub;
 
 
 function ReservationPage() {
