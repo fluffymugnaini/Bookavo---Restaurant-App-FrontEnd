@@ -83,7 +83,7 @@ function BookingPage({ restaurant, id }, props) {
   console.log(bookedSlots);
 
    //!!!!NEED TO GET THE BOOKING DATE OUT OF THE FORM BEFORE SUBMITTING ------------------------------IN PROGRESS
-  const inputtedDate = "2021-03-31"   //  = watch('date');   //DOES IT WORK? for now working with hardcoded date
+  const inputtedDate = "2021-04-01"   //  = watch('date');   //DOES IT WORK? for now working with hardcoded date
 
   const dateStringDB = "2021-03-31T23:00:00.000Z";
   console.log(dateStringDB.slice(0,10));
@@ -182,13 +182,13 @@ function BookingPage({ restaurant, id }, props) {
       <label>Time:</label>
       <select name="time" ref={register({ required: true })}>
       <option value="">Select...</option>
-        {/* {allRestaurantTimeSlots.map((item) =>{
-                 return <option value={item.toString()}>{item}</option>
-        })} */}
-
-        {filteredTimeSlots.map((item) =>{
+        {allRestaurantTimeSlots.map((item) =>{
                  return <option value={item.toString()}>{item}</option>
         })}
+
+        {/* {filteredTimeSlots.map((item) =>{
+                 return <option value={item.toString()}>{item}</option>
+        })} */}
       </select>
       <label>Your Mobile Number</label>
       <input name="mobile" type="mobile" ref={register({ required: true })} />
