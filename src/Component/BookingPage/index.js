@@ -102,13 +102,7 @@ function BookingPage({ restaurant, id }, props) {
   console.log("current reservation no people " + currentReservationNoOfPeople);
    
 
-  //NEED TO GET THE BOOKING DATE OUT OF THE FORM BEFORE SUBMITTING ------------------------------IN PROGRESS
-  const inputtedDate = "2021-03-29"; //  = watch('date');   //DOES IT WORK? for now working with hardcoded date
-  // const time = watch('time');
-  //console.log("The watched time value " + time);
-  //NEED TO GET THE NO OF PEOPLE OUT OF THE FORM BEFORE SUBMITTING
-  // const currentReservationPeople = 5;
-
+  
   // NEED TO GENERATE ARRAY WITH 1H SLOTS BETWEEN THE OPENING TIME AND CLOSING TIME
   function generateAllPossibleBookingSlots(start, end, step = 100) {
     const len = Math.floor((end - start) / step) + 1;
