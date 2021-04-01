@@ -1,0 +1,25 @@
+.info {
+    /* display: flex;
+    justify-content: center;
+    flex-direction: column; */
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+    width: 50%;
+}
+
+.covidList {
+
+    display: block;
+    margin: 20px auto;
+    width: 70%;
+}
+
+.heading {
+    font-size: 3em;
+}
+
+.para {
+    font-size: 1.5em;
+}

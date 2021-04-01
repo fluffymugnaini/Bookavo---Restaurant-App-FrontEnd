@@ -6,18 +6,18 @@ import { withRouter, useHistory } from "react-router-dom";
 import CountryButton from "./CountryButton";
 
 function LandingPage(props) {
-  console.log(props);
+
+  // console.log(props);
   const history = useHistory();
   const onClick = (country) => {
     history.push("/recs");
     props.setCuisine(country);
   };
 
-  console.log(props.cuisine);
+  // console.log(props.cuisine);
 
   return (
     <div className={css.bg}>
-      {/* <button onClick={onClick} className={css.button}>BK</button> */}
       <div className={css.content}>
         <img src={bookavologo} className={css.logo}></img>
         <div className={css.tagline}>
@@ -56,11 +56,6 @@ function LandingPage(props) {
             }}
             text="INDIA"
           />
-          {/* <button className={css.italy} onClick={onClick}>ITALY</button>
-<button className={css.italy} onClick={onClick}>YEMEN</button>
-<button className={css.italy} onClick={onClick}>TRINIDAD</button>
-<button className={css.italy} onClick={onClick}>ROMANIA</button>
-<button className={css.italy} onClick={onClick}>INDIA</button> */}
         </div>
       </div>
     </div>

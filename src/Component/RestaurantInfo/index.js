@@ -46,50 +46,57 @@ function RestaurantInfo({restaurant, dispatch, id, newRec, cuisine}) {
   return (
     <>
       <Header />
-      <div className={css.container}>
-        <h1 className={css.restName}>{restaurant.restaurantName}</h1>
-        <img
-          className={css.img}
-          src={restaurant.photoURL}
-          alt="restaurant image"
-          height="600px"
-        />
+      
+        <div className={css.container}>
+          <h1 className={css.restName}>{restaurant.restaurantName}</h1>
+          <img
+            className={css.img}
+            src={restaurant.photoURL}
+            alt="restaurant image"
+            height="600px"
+          />
 
-        <ul className={css.restDetails}>
-          <li>Opening Time: {restaurant.openingTimes}</li>
-          <li>Closing Time: {restaurant.closingTimes}</li>
-          <li>Phone Number: {restaurant.phoneNumber}</li>
-          <li>Address: {restaurant.addressLine1}</li>
-          <li>{restaurant.area}</li>
-          <li>{restaurant.postcode}</li>
-        </ul>
+          <ul className={css.restDetails}>
+            <li>Opening Time: {restaurant.openingTimes}</li>
+            <li>Closing Time: {restaurant.closingTimes}</li>
+            <li>Phone Number: {restaurant.phoneNumber}</li>
+            <li>Address: {restaurant.addressLine1}</li>
+            <li>{restaurant.area}</li>
+            <li>{restaurant.postcode}</li>
+          </ul>
 
-        <div className={css.buttons}>
-          {/* <Route path='/bookings'>
+          <div className={css.buttons}>
+            {/* <Route path='/bookings'>
             <BookingPage id={`${id}`} />
         </Route> */}
-          {/* <Link to={{ pathname: "/bookings", state: { id: { id } } }}> */}
-          <Link to={{ pathname: "/bookings", state: { id: restaurant.id, restaurant: restaurant  } }}>
-            <Button
-              text="Book"
-              handleClick={() => {
-                console.log("when clicking on book " + restaurant.id);
+            {/* <Link to={{ pathname: "/bookings", state: { id: { id } } }}> */}
+            <Link
+              to={{
+                pathname: "/bookings",
+                state: { id: restaurant.id, restaurant: restaurant },
               }}
-            />
-          </Link>
-          <Button text="Next" handleClick={newRec} />
+            >
+              <Button
+                text="Book"
+                handleClick={() => {
+                  console.log("when clicking on book " + restaurant.id);
+                }}
+              />
+            </Link>
+            <Button text="Next" handleClick={newRec} />
+          </div>
         </div>
-      </div>
-      <div className={css.extraDetails}>
-        <p className={css.description}> {restaurant.description}</p>
-        <a
-          href={restaurant.websiteURL}
-          target="_blank"
-          style={{ color: "#3d7ea6" }}
-        >
-          Click here to go to Restaurant website
-        </a>
-      </div>
+        <div className={css.extraDetails}>
+          <p className={css.description}> {restaurant.description}</p>
+          <a
+            href={restaurant.websiteURL}
+            target="_blank"
+            style={{ color: "#3d7ea6" }}
+          >
+            Click here to go to Restaurant website
+          </a>
+        </div>
+     
     </>
   );
 }

@@ -6,7 +6,7 @@ import bookavologo from '../../../src/bookavologo.png'
 function Header() {
     return (
         <div className={css.header}>
-           <img src={bookavologo} className={css.logo} width='10%' alt="dark bg image with wok of shrimp noodles"></img>
+           <img src={bookavologo} className={css.logo}  alt="bookavo logo"></img>
         </div>
     )
 }

@@ -1,19 +1,47 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@300&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@300&display=swap");
 
 body {
-  
-background: rgb(36,37,41);
-background: linear-gradient(90deg, rgba(36,37,41,1) 19%, rgba(12,14,18,1) 48%);
-    font-family: 'Quicksand', sans-serif;;
+  /* background: linear-gradient(90deg, rgba(36,37,41,1) 19%, rgba(12,14,18,1) 48%); */
+  background: linear-gradient(90deg, rgb(31, 37, 59) 19%, rgb(18, 21, 27) 48%);
+  font-family: "Quicksand", sans-serif;
+  color: white;
+  text-decoration: none;
 }
 
 .nav {
-    display: none;
+  display: none;
+}
+
+.homePage {
+  list-style-type: none;
+  padding: 0;
+  position: absolute;
+  display: block;
+  margin: 0 auto;
+  top: 20px;
+  
 }
 
 /* * {
     margin: 0;
     padding: 0;
 } */
+
+a:link {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+/* A link that has been visited */
+a:visited {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+/* A link that is hovered on */
+a:hover {
+    color: rgb(59, 90, 170);
+    text-decoration: none;
+}
+/* A link that is selected */
+a:active {
+    color: white;
+}

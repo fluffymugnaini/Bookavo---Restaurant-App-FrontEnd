@@ -1,5 +1,6 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import Table from './Table';
+import Header from '../Header';
 import css from './reservationPage.module.css';
 import BACKEND_URL_Bookings from "../../libs/config";
 
@@ -59,6 +60,7 @@ function ReservationPage() {
 
         return (
             <div className={css.resPage}>
+                <Header/>
                 <h1>Reservation Page</h1>
              
               
