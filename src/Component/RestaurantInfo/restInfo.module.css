@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda&display=swap');
+
 /* .wrapper {
   display: flex;
   flex-direction: column;
@@ -19,12 +21,15 @@
 }
 
 .restName {
+  font-family: 'Bodoni Moda', serif;
+  font-weight: 1;
   display: flex;
   justify-content: left;
   margin-left: 3%;
   position: relative;
   top: 190px;
   font-size: 4em;
+  letter-spacing:5px ;
   color: white;
   background-color: rgba(0, 0, 0, 0.432);
   padding: 20px;
@@ -34,6 +39,7 @@
 }
 
 .restDetails {
+  
   list-style-type: none;
   font-size: 1.5em;
   /* display: flex;
