@@ -1,55 +1,73 @@
+/* .wrapper {
+  display: flex;
+  flex-direction: column;
+
+} */
+
 .container {
   color: white;
-  text-align: center;
-  margin: 0;
+  /* text-align: center; */
+  display: block;
+  margin: 0 auto;
   position: relative;
-  top: -130px;
+  top: -160px;
+  width: 50%;
 }
 
 .img {
-  width: 50%;
+  width: 100%;
 }
 
 .restName {
   display: flex;
   justify-content: left;
-  margin-left: 28%;
+  margin-left: 3%;
   position: relative;
-  top: 170px;
+  top: 190px;
   font-size: 4em;
   color: white;
   background-color: rgba(0, 0, 0, 0.432);
+  padding: 20px;
   max-width: fit-content;
+ overflow-wrap: break-word;
   text-transform: uppercase;
 }
 
 .restDetails {
   list-style-type: none;
   font-size: 1.5em;
-  display: flex;
-  justify-content: right;
+  /* display: flex;
+  justify-content: right; */
   flex-direction: column;
   padding: 40px;
-  background-color: rgba(0, 0, 0, 0.432);
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.651);
   max-width: fit-content;
-  position: relative;
-  bottom: 290px;
-  margin-left: 57.7%;
+   overflow-wrap: break-word;
+  /* position: relative;
+  bottom: 290px; */
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  /* margin-left: 57.7%; */
 }
 
 .buttons {
   display: flex;
-  justify-content: left;
-  margin: 0 24.7%;
-  position: relative;
-  top: -440px;
-  padding-bottom: 0;
+  /* justify-content: left; */
+  /* margin: 0 24.7%; */
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  /* top: -440px; */
+  padding: 0;
+  margin: 0;
  
 }
 
 .extraDetails {
   position: relative;
-  bottom: 550px;
+  bottom: 130px;
   text-align: center;
   font-size: 1.8em;
 }

@@ -8,15 +8,19 @@ import DatePicker,{ registerLocale }from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {enGB} from 'date-fns/esm/locale';
 import { format, startOfDay} from 'date-fns';
-
 import Header from '../Header';
-import {  useHistory } from "react-router-dom";
-
+import { withRouter, useHistory } from "react-router-dom";
 registerLocale('enGB', enGB);
 
 
-function BookingPage({ restaurant, id }) {
-//!! On page refresh redirect to the landing page or make sure that the restaurant and id data is not lost on reload  - check maybe local storage
+function BookingPage({ restaurant, id }, props) {
+  //!! On page refresh redirect to the landing page or make sure that the restaurant and id data is not lost on reload  - check maybe local storage
+  console.log(props);
+  const history = useHistory();
+  const onClick = () => {
+    history.push("/confirmation");
+   
+  };
 
   const {
     register,
@@ -28,43 +32,46 @@ function BookingPage({ restaurant, id }) {
   } = useForm();
 
   console.log(`Restaurant id from booking page is ${id}`);
-  
+
   const [bookedSlots, setBookedSlots] = useState([]);
 
-    const onSubmit = (data) => {
-      postBooking(data);
-      Book({id});
-      };
+  const onSubmit = (data) => {
+    postBooking(data);
+    Book({ id });
+    onClick();
+  };
 
-    const postBooking = (formData) => {
-      const requestOptions = {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            RestaurantID: id,            
-            CustomerName: formData.fullName,
-            BookingDate: formData.date,
-            BookingTime: formData.time,
-            NumberOfPeople: parseInt(formData.number),
-            CustomerMobile: formData.mobile,
-            CustomerEmail: formData.email,
-          }),
+  const postBooking = (formData) => {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        RestaurantID: id,
+        CustomerName: formData.fullName,
+        BookingDate: formData.date,
+        BookingTime: formData.time,
+        NumberOfPeople: parseInt(formData.number),
+        CustomerMobile: formData.mobile,
+        CustomerEmail: formData.email,
+      }),
     };
-      fetch(`${BACKEND_URL_Bookings}`, requestOptions);
-  }
-    
+    fetch(`${BACKEND_URL_Bookings}`, requestOptions);
+  };
+
   //!!! FUNCTION IS JUST TEMPORARY SHOWING WHEN THE DATA IS SUBMITTED
   //This can be used instead to redirect to the booking confirmation page where we thank them for the booking and give them the latest covid safety info for restaurants
-  function Book({id}) {
-    console.log(`This id ( ${id} ) is logged when the submit button is pressed`);
-    alert(`Thank you for booking at Restaurant id number ${id}!`);
-   
+  function Book({ id }) {
+    console.log(
+      `This id ( ${id} ) is logged when the submit button is pressed`
+    );
   }
 
   //GET THE SLOTS ALREADY BOOKED
   useEffect(() => {
     async function getBookedSlots() {
-      let response = await fetch(`${BACKEND_URL_TimeSlots}?restaurantId=${id}&date=${inputtedDate}`);
+      let response = await fetch(
+        `${BACKEND_URL_TimeSlots}?restaurantId=${id}&date=${inputtedDate}`
+      );
       let data = await response.json();
       console.log(data);
       setBookedSlots(data);
@@ -73,7 +80,6 @@ function BookingPage({ restaurant, id }) {
   },[]);
 
   console.log(bookedSlots);
-
 
    //!!!!NEED TO GET THE BOOKING DATE OUT OF THE FORM BEFORE SUBMITTING ------------------------------IN PROGRESS
   const inputtedDate = "2021-03-31"   //  = watch('date');   //DOES IT WORK? for now working with hardcoded date
@@ -94,20 +100,34 @@ function BookingPage({ restaurant, id }) {
   //NEED TO GET THE NO OF PEOPLE OUT OF THE FORM BEFORE SUBMITTING
   const currentReservationNoOfPeople = parseInt(watch('number'));
   console.log("current reservation no people " + currentReservationNoOfPeople);
- 
+   
+
+  //NEED TO GET THE BOOKING DATE OUT OF THE FORM BEFORE SUBMITTING ------------------------------IN PROGRESS
+  const inputtedDate = "2021-03-29"; //  = watch('date');   //DOES IT WORK? for now working with hardcoded date
+  // const time = watch('time');
+  //console.log("The watched time value " + time);
+  //NEED TO GET THE NO OF PEOPLE OUT OF THE FORM BEFORE SUBMITTING
+  // const currentReservationPeople = 5;
+
   // NEED TO GENERATE ARRAY WITH 1H SLOTS BETWEEN THE OPENING TIME AND CLOSING TIME
   function generateAllPossibleBookingSlots(start, end, step = 100) {
-    const len = Math.floor((end - start) / step) + 1
-    return (Array(len).fill().map((_, idx) => start + (idx * step)));
+    const len = Math.floor((end - start) / step) + 1;
+    return Array(len)
+      .fill()
+      .map((_, idx) => start + idx * step);
   }
-  
-  var allRestaurantSlots = generateAllPossibleBookingSlots(parseInt(restaurant.openingTimes), (parseInt(restaurant.closingTimes)-100), 100);
+
+  var allRestaurantSlots = generateAllPossibleBookingSlots(
+    parseInt(restaurant.openingTimes),
+    parseInt(restaurant.closingTimes) - 100,
+    100
+  );
 
   var allRestaurantTimeSlots = [];
-  for (let i=0; i<allRestaurantSlots.length; i++){
+  for (let i = 0; i < allRestaurantSlots.length; i++) {
     var slot = allRestaurantSlots[i].toString();
-    var splicedSlot = [slot.slice(0,2), ":",slot.slice(2)].join("");
-    allRestaurantTimeSlots.push(splicedSlot)
+    var splicedSlot = [slot.slice(0, 2), ":", slot.slice(2)].join("");
+    allRestaurantTimeSlots.push(splicedSlot);
   }
 
   // CHECK OVER THE ARRAY WITH ALL THE SLOTS AND 
@@ -194,4 +214,5 @@ function BookingPage({ restaurant, id }) {
   );
 }
 
-export default BookingPage;
+export default withRouter(BookingPage);
+
