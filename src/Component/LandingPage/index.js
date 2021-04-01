@@ -5,6 +5,8 @@ import css from "./landingPage.module.css";
 import { withRouter, useHistory } from "react-router-dom";
 import CountryButton from "./CountryButton";
 
+
+
 function LandingPage(props) {
 
   // console.log(props);
@@ -18,6 +20,7 @@ function LandingPage(props) {
 
   return (
     <div className={css.bg}>
+    
       <div className={css.content}>
         <img src={bookavologo} className={css.logo}></img>
         <div className={css.tagline}>

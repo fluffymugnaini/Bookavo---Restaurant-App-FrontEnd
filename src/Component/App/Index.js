@@ -9,6 +9,10 @@ import reducer, {INITIAL_REST} from '../../libs/restaurantReducer';
 import React, { useReducer, useState } from "react";
 import LandingPage from '../LandingPage';
 import ConfirmationPage from '../ConfirmationPage';
+import AuthButton from "../AuthButton";
+import { AuthProvider } from "../../authContext";
+// import LogoutButton from '../LogoutButton';
+// import LoginButton from '../LoginButton';
 
 function App() {
   const [restaurant, dispatch] = useReducer(reducer, INITIAL_REST);
@@ -24,58 +28,61 @@ function App() {
   }
 
   return (
-    <Router>
-      <div className="App">
-        <ul className="homePage">
-          <li>
-            <Link to="/">HOME PAGE</Link>
-          </li>
-        </ul>
-        <nav className="nav">
-          <ul>
+    <AuthProvider>
+      <Router>
+        <div className="App">
+          <ul className="homePage">
             <li>
-              <Link to="/">Landing Page</Link>
-            </li>
-            <li>
-              <Link to="/recs">Recommendations</Link>
-            </li>
-            <li>
-              <Link to="/bookings">Booking Page</Link>
-            </li>
-            <li>
-              <Link to="/reservations">Reservations</Link>
-            </li>
-            <li>
-              <Link to="/confirmation">Confirmation</Link>
+              <Link to="/">HOME PAGE</Link>
             </li>
           </ul>
-        </nav>
+<AuthButton/>
+          <nav className="nav">
+            <ul>
+              <li>
+                <Link to="/">Landing Page</Link>
+              </li>
+              <li>
+                <Link to="/recs">Recommendations</Link>
+              </li>
+              <li>
+                <Link to="/bookings">Booking Page</Link>
+              </li>
+              <li>
+                <Link to="/reservations">Reservations</Link>
+              </li>
+              <li>
+                <Link to="/confirmation">Confirmation</Link>
+              </li>
+            </ul>
+          </nav>
 
-        <Switch>
-          <Route path="/bookings">
-            <BookingPage id={restaurant.id} restaurant={restaurant} />
-          </Route>
-          <Route path="/recs">
-            <RestaurantInfo
-              restaurant={restaurant}
-              dispatch={dispatch}
-              id={id}
-              newRec={newRec}
-              cuisine={cuisine}
-            />
-          </Route>
-          <Route path="/reservations">
-            <ReservationPage />
-          </Route>
-          <Route path="/confirmation">
-            <ConfirmationPage />
-          </Route>
-          <Route path="/">
-            <LandingPage cuisine={cuisine} setCuisine={setCuisine} />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+          <Switch>
+            <Route path="/bookings">
+              <BookingPage id={restaurant.id} restaurant={restaurant} />
+            </Route>
+            <Route path="/recs">
+              <RestaurantInfo
+                restaurant={restaurant}
+                dispatch={dispatch}
+                id={id}
+                newRec={newRec}
+                cuisine={cuisine}
+              />
+            </Route>
+            <Route path="/reservations">
+              <ReservationPage />
+            </Route>
+            <Route path="/confirmation">
+              <ConfirmationPage />
+            </Route>
+            <Route path="/">
+              <LandingPage cuisine={cuisine} setCuisine={setCuisine} />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </AuthProvider>
   );
   }
 

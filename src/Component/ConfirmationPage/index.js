@@ -12,16 +12,33 @@ function ConfirmationPage() {
           CONFIRMATION TEXT
         </h1>
         <p className={css.para}>
-          In the upcoming months, restaurants are going to be very busy. Please
-          help them by adhering to current guidelines, which can be found below:
+          Due to the ongoing COVID-19 (Coronavirus) pandemic, we are undertaking
+          measures to ensure that all of our restaurant partners, and our
+          customers are safe. We have some rules that you will have to be aware
+          of, and follow, before and during your dining experience.
           <ul className={css.covidList}>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li>
+              You must follow either the rule of six, or be in a group of any
+              size as long as there are no more than two households present.
+            </li>
+            <li>
+              You should use the hand sanitiser provided upon entry to the
+              premises. This helps to keep everyone around you, including the
+              staff of the restaurant safe.
+            </li>
+            <li>
+              When your group is not seated - for example, when you’re being
+              shown to a table or going to the toilet - your group must wear
+              face masks unless one of the exemptions apply, follow one-way
+              systems and observe social distancing.
+            </li>
+            <li>
+              <strong>
+                Do not attend your booking if you have symptoms of COVID-19 
+              </strong>
+              and are self-isolating, or shielding. Call the National Helpline
+              on 0800 111 4000.
+            </li>
           </ul>
         </p>
       </div>

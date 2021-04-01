@@ -204,6 +204,7 @@ function BookingPage({ restaurant, id }, props) {
         }}
       />
     </form>
+    <p className={css.p}>If you have any special requirements, please contact the restaurant directly.</p>
     </>
   );
 }

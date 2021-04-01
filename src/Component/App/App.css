@@ -45,3 +45,36 @@ a:hover {
 a:active {
     color: white;
 }
+
+button
+ {
+  /* background: rgb(57, 58, 65); */
+  background: #ec598f98;
+  
+  color: white;
+  text-transform: uppercase;
+  border-color: rgba(255, 255, 255, 0.521);
+ 
+  margin-left: 5px;
+  padding: 15px 90px;
+  font-size: 2em;
+  font-weight: 100;
+  letter-spacing: 6px;
+ 
+}
+
+button {
+  transition: 0.3s all;
+  transform: translateY(3px);
+  
+  opacity: 0.8;
+}
+
+button:hover {
+  background-color: transparent;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+}
+
+
+
