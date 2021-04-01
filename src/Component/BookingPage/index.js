@@ -110,7 +110,7 @@ function BookingPage({ restaurant, id }) {
     allRestaurantTimeSlots.push(splicedSlot)
   }
 
-  // NEED TO CHECK TO GET THE SLOTS BOOKED
+  // CHECK OVER THE ARRAY WITH ALL THE SLOTS AND 
   // SOME WAY TO MAP OVER THE SLOTS ARRAY AND CHECK WHAT THEIR OCCUPANCY INCLUDING THE NEW RESERVATION WOULD BE --> IF OVER RESTAURANT CAPACITY DO NOT INCLUDE IN THE FILTERED ARRAY
   
   const filteredTimeSlots = allRestaurantTimeSlots.filter((ts)=>{
@@ -124,12 +124,6 @@ function BookingPage({ restaurant, id }) {
   })
 
   console.log(filteredTimeSlots);
-
-  // const result = allRestaurantTimeSlots.filter((ts)=>{
-  //   return bookedSlots.some((booking)=>{
-  //     return (booking.timeSlot === ts && booking.currentSlotOccupancy < restaurant.capacity);   //this only leaves the slots that have a reservation, but under the max capacity
-  //   })
-  // })
   
   return (
     <>
