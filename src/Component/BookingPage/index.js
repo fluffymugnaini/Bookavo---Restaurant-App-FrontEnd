@@ -3,15 +3,13 @@ import { useForm, Controller, useWatch } from "react-hook-form";
 import css from "./bookingPage.module.css";
 import BACKEND_URL_Bookings from "../../libs/config";
 import {BACKEND_URL_TimeSlots} from "../../libs/config";
-import {BACKEND_URL_Restaurants} from "../../libs/config";
-import DatePicker,{ registerLocale }from "react-datepicker";
+//import {BACKEND_URL_Restaurants} from "../../libs/config";
+import DatePicker from "react-datepicker"; //if needed we can also import register locale
 import "react-datepicker/dist/react-datepicker.css";
 //import {enGB} from 'date-fns/esm/locale';
-import { format, startOfDay, parseISO} from 'date-fns';
+import { startOfDay } from 'date-fns';  //if needed we can also import format, parseISO
 import Header from '../Header';
 import { withRouter, useHistory } from "react-router-dom";
-
-
 //registerLocale('enGB', enGB);
 
 
@@ -28,7 +26,7 @@ function BookingPage({ restaurant, id }, props) {
     register,
     handleSubmit,
     control,
-    watch,
+    //watch,
     errors,
     formState: { isSubmitting },
   } = useForm();
@@ -204,7 +202,6 @@ function BookingPage({ restaurant, id }, props) {
         <option value="6">6</option>
         <option value="7">7</option>
         <option value="8">8</option>
-        <option value="8+">8+</option>
       </select>
      
       <section>
