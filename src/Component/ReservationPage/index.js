@@ -24,7 +24,7 @@ function ReservationPage() {
       }
     }
     getBookings();
-  });
+  },[isAuthenticated]);
 
   const columns = useMemo(
     () => [
