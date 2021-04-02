@@ -15,19 +15,21 @@ function ReservationPage() {
 
   useEffect(() => {
     async function getBookings() {
-      let response = await fetch(`${BACKEND_URL_Bookings}/1`); //get bookings by restaurant id - hardcoded at the moment but won't be if we sort out Auth0
-      let data = await response.json();
-      console.log(data);
-      console.log(data.bookingDate);
-      setData(data);
+      if(isAuthenticated){
+        let response = await fetch(`${BACKEND_URL_Bookings}?token=${user.sub}`);
+        let data = await response.json();
+        console.log(data);
+        console.log(data.bookingDate);
+        setData(data);
+      }
     }
     getBookings();
-  }, []);
+  },[isAuthenticated]);
 
   const columns = useMemo(
     () => [
       {
-        Header: `Restaurant Name`,
+        Header: " ",
 
         columns: [
           {

@@ -127,3 +127,11 @@ button {
   margin: 40px;
   text-align: center;
 }
+
+.error {
+
+  display: inline;
+  content: "⚠ ";
+  color: red;
+
+}
