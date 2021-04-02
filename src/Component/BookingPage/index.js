@@ -46,7 +46,6 @@ function BookingPage({ restaurant, id }, props) {
 
   console.log("the date from use watch " + watchedDate);
   console.log("the noPeople from use watch " + watchedNoOfPeople);
-
   console.log(`Restaurant id from booking page is ${id}`);
 
   const [bookedSlots, setBookedSlots] = useState([]);
@@ -148,7 +147,7 @@ function BookingPage({ restaurant, id }, props) {
       }
   
       var fullDate= dayString.concat(`-${monthString}-${yearString}`); //concatenated date format DD/MM/YYYY
-      console.log(fullDate);
+      //console.log(fullDate);
       return fullDate;
     }
   }
