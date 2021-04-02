@@ -33,8 +33,42 @@ function BookingPage({ restaurant, id }, props) {
 
   const [bookedSlots, setBookedSlots] = useState([])
 
+  const options = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  }
+  const sendSms = (data1) => {
+    const message = {
+      to: data1.mobile,
+      body: `A ${
+        restaurant.restaurantName
+      } Booking Confirmation for a group of ${
+        data1.number
+      } people at ${data1.date.toLocaleDateString('en-UK', options)} ${
+        data1.time
+      }`,
+    }
+    fetch('/api/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(message),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          console.log('sms send sucessfully', data)
+        } else {
+          console.log('sms did not send sucessfully', data)
+        }
+      })
+  }
   const onSubmit = (data) => {
     console.log('this is data: ', data)
+    sendSms(data)
     postBooking(data)
     Book({ id })
     onClick()
