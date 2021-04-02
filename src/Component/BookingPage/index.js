@@ -218,72 +218,82 @@ function BookingPage({ restaurant, id }, props) {
 
   return (
     <>
-    <Header/>
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <h1 className={css.h1}>Book a Table</h1>
-      <label>Full Name:</label>
-      <input name="fullName" ref={register({ required: true })} />
-      <label>How many people?</label>
-      <select name="number" ref={register({ required: true })}>
-        <option value="">Select...</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-      </select>
-     
-      <section>
-        <label>Date:</label>
-        <Controller 
-          name="date"
-          control={control}
-          render={(props) => (
-            <DatePicker 
-              placeholderText="Select Date"
-              onChange={(e) => props.onChange(e)}
-              selected={props.value}
-              dateFormat="dd-MM-yyyy"
-              defaultValue={startOfDay(new Date())} 
-              // locale='enGB'
-              minDate={startOfDay(new Date())}    //set earliest date available to book to today -- startOfDay vs startOfToday
-            />
-          )}
-          ref={register({ required: true })}
-        />
-      </section>
-      <label>Time:</label>
-      <select name="time" ref={register({ required: true })}>
-      <option value="">Select...</option>
-        {/* {allRestaurantTimeSlots.map((item) =>{
+      <Header />
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <h1 className={css.h1}>Book a Table</h1>
+        <label>Full Name:</label>
+        <input name="fullName" ref={register({ required: true })} />
+        {errors.fullName && <p className={css.error}>Name is required</p>}
+        <label>How many people?</label>
+        <select name="number" ref={register({ required: true })}>
+          <option value="">Select...</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+        </select>
+        {errors.number && <p className={css.error}>Party number is required</p>}
+
+        <section>
+          <label>Date:</label>
+          <Controller
+            name="date"
+            control={control}
+            render={(props) => (
+              <DatePicker
+                placeholderText="Select Date"
+                onChange={(e) => props.onChange(e)}
+                selected={props.value}
+                dateFormat="dd-MM-yyyy"
+                defaultValue={startOfDay(new Date())}
+                // locale='enGB'
+                minDate={startOfDay(new Date())} //set earliest date available to book to today -- startOfDay vs startOfToday
+              />
+            )}
+            ref={register({ required: true })}
+          />
+        </section>
+        {errors.date && <p className={css.error}>Date is required</p>}
+        <label>Time:</label>
+        <select name="time" ref={register({ required: true })}>
+          <option value="">Select...</option>
+          {/* {allRestaurantTimeSlots.map((item) =>{
                  return <option value={item.toString()}>{item}</option>
         })} */}
 
-        {filteredTimeSlots.map((item) =>{
-                 return <option value={item.toString()}>{item}</option>
-        })}
-      </select>
-      <label>Your Mobile Number</label>
-      <input name="mobile" type="mobile" ref={register({ required: true })} />
-      <label>Email</label>
-      <input
-        name="email"
-        ref={register({ required: true, pattern: /^\S+@\S+$/i })}
-      />
-
-      <input
-        disabled={isSubmitting}
-        type="submit"
-        onClick={() => {
-        }}
-      />
-    </form>
-    <p className={css.p}>If you have any special requirements, please contact the restaurant directly.</p>
+          {filteredTimeSlots.map((item) => {
+            return <option value={item.toString()}>{item}</option>;
+          })}
+        </select>
+        {errors.time && <p className={css.error}>Time is required</p>}
+        <label>Your Mobile Number</label>
+        <input name="mobile" type="mobile" ref={register({ required: true })} />
+        {errors.mobile && (
+          <p className={css.error}>Mobile number is required</p>
+        )}
+        <label>Email</label>
+        <input
+          name="email"
+          ref={register({ required: true, pattern: /^\S+@\S+$/i })}
+        />
+        {errors.email && errors.email.type === "required" && (
+          <p className={css.error}>E-mail address is required</p>
+        )}
+        {errors.email && errors.email.type === "pattern" && (
+          <p className={css.error}>Must be a valid e-mail address</p>
+        )}
+        <input disabled={isSubmitting} type="submit" onClick={() => {}} />
+      </form>
+      <p className={css.p}>
+        If you have any special requirements, or are booking for a party larger
+        than 8, please contact the restaurant directly.
+      </p>
     </>
-  )
+  );
 }
 
 export default withRouter(BookingPage)
