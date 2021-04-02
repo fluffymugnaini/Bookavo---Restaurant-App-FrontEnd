@@ -1,6 +1,6 @@
 import React from "react";
 import css from "./confirmation.module.css";
-import Header from '../Header';
+import Header from "../Header";
 
 function ConfirmationPage() {
   return (
@@ -14,8 +14,11 @@ function ConfirmationPage() {
         <p className={css.para}>
           Due to the ongoing COVID-19 (Coronavirus) pandemic, we are undertaking
           measures to ensure that all of our restaurant partners, and our
-          customers are safe. We have some rules that you will have to be aware
-          of, and follow, before and during your dining experience.
+          customers are safe.
+          <br />
+          <br />
+          We have some rules that you will have to be aware of, and follow,
+          before and during your dining experience.
           <ul className={css.covidList}>
             <li>
               You must follow either the rule of six, or be in a group of any
@@ -34,9 +37,9 @@ function ConfirmationPage() {
             </li>
             <li>
               <strong>
-                Do not attend your booking if you have symptoms of COVID-19 
+                Do not attend your booking if you have symptoms of COVID-19
               </strong>
-               and are self-isolating, or shielding. Call the National Helpline
+              and are self-isolating, or shielding. Call the National Helpline
               on 0800 111 4000.
             </li>
           </ul>
