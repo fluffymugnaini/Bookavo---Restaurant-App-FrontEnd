@@ -36,7 +36,7 @@ function ConfirmationPage() {
               <strong>
                 Do not attend your booking if you have symptoms of COVID-19 
               </strong>
-              and are self-isolating, or shielding. Call the National Helpline
+               and are self-isolating, or shielding. Call the National Helpline
               on 0800 111 4000.
             </li>
           </ul>

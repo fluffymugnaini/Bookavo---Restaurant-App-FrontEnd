@@ -15,12 +15,10 @@ import { withRouter, useHistory } from "react-router-dom";
 
 function BookingPage({ restaurant, id }, props) {
   //!! On page refresh redirect to the landing page or make sure that the restaurant and id data is not lost on reload  - check maybe local storage
-  console.log(props);
-  const history = useHistory();
+  const history = useHistory()
   const onClick = () => {
-    history.push("/confirmation");
-   
-  };
+    history.push('/confirmation')
+  }
 
   const {
     register,
@@ -29,7 +27,7 @@ function BookingPage({ restaurant, id }, props) {
     //watch,
     errors,
     formState: { isSubmitting },
-  } = useForm();
+  } = useForm()
 
   //NEED TO GET THE DATE & NO OF PEOPLE OUT OF THE FORM BEFORE SUBMITTING
   const watchedDate = useWatch({
@@ -46,19 +44,20 @@ function BookingPage({ restaurant, id }, props) {
   console.log("the noPeople from use watch " + watchedNoOfPeople);
   console.log(`Restaurant id from booking page is ${id}`);
 
-  const [bookedSlots, setBookedSlots] = useState([]);
+  const [bookedSlots, setBookedSlots] = useState([])
 
   const onSubmit = (data) => {
-    postBooking(data);
-    Book({ id });
-    onClick();
-  };
+    console.log('this is data: ', data)
+    postBooking(data)
+    Book({ id })
+    onClick()
+  }
 
   const postBooking = (formData) => {
     console.log(formData.date)
     const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         RestaurantID: id,
         CustomerName: formData.fullName,
@@ -67,17 +66,16 @@ function BookingPage({ restaurant, id }, props) {
         NumberOfPeople: parseInt(formData.number),
         CustomerMobile: formData.mobile,
         CustomerEmail: formData.email,
+        RestaurantName: restaurant.restaurantName,
       }),
-    };
-    fetch(`${BACKEND_URL_Bookings}`, requestOptions);
-  };
+    }
+    fetch(`${BACKEND_URL_Bookings}`, requestOptions)
+  }
 
   //!!! FUNCTION IS JUST TEMPORARY SHOWING WHEN THE DATA IS SUBMITTED
   //This can be used instead to redirect to the booking confirmation page where we thank them for the booking and give them the latest covid safety info for restaurants
   function Book({ id }) {
-    console.log(
-      `This id ( ${id} ) is logged when the submit button is pressed`
-    );
+    console.log(`This id ( ${id} ) is logged when the submit button is pressed`)
   }
 
   //GET THE SLOTS ALREADY BOOKED
@@ -94,7 +92,7 @@ function BookingPage({ restaurant, id }, props) {
   },[watchedDate]);
 
 
-  console.log(bookedSlots);
+  console.log(bookedSlots)
 
   //Format the date to match the match the format required for the 
   function formatDate(date){
@@ -152,23 +150,23 @@ function BookingPage({ restaurant, id }, props) {
   
   // NEED TO GENERATE ARRAY WITH 1H SLOTS BETWEEN THE OPENING TIME AND CLOSING TIME
   function generateAllPossibleBookingSlots(start, end, step = 100) {
-    const len = Math.floor((end - start) / step) + 1;
+    const len = Math.floor((end - start) / step) + 1
     return Array(len)
       .fill()
-      .map((_, idx) => start + idx * step);
+      .map((_, idx) => start + idx * step)
   }
 
   var allRestaurantSlots = generateAllPossibleBookingSlots(
     parseInt(restaurant.openingTimes),
     parseInt(restaurant.closingTimes) - 100,
     100
-  );
+  )
 
-  var allRestaurantTimeSlots = [];
+  var allRestaurantTimeSlots = []
   for (let i = 0; i < allRestaurantSlots.length; i++) {
-    var slot = allRestaurantSlots[i].toString();
-    var splicedSlot = [slot.slice(0, 2), ":", slot.slice(2)].join("");
-    allRestaurantTimeSlots.push(splicedSlot);
+    var slot = allRestaurantSlots[i].toString()
+    var splicedSlot = [slot.slice(0, 2), ':', slot.slice(2)].join('')
+    allRestaurantTimeSlots.push(splicedSlot)
   }
 
   // CHECK OVER THE ARRAY WITH ALL THE SLOTS AND COMPARE AGAINST THE SLOTS THAT ALREADY HAVE BOOKINGS
@@ -182,8 +180,8 @@ function BookingPage({ restaurant, id }, props) {
     }
   })
 
-  console.log(filteredTimeSlots);
-  
+  console.log(filteredTimeSlots)
+
   return (
     <>
     <Header/>
@@ -251,8 +249,7 @@ function BookingPage({ restaurant, id }, props) {
     </form>
     <p className={css.p}>If you have any special requirements, please contact the restaurant directly.</p>
     </>
-  );
+  )
 }
 
-export default withRouter(BookingPage);
-
+export default withRouter(BookingPage)
