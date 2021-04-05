@@ -3,7 +3,6 @@ import css from "./restInfo.module.css";
 import Button from "../Button";
 import Header from "../Header";
 import { Link } from "react-router-dom";
-// import BookingPage from "../BookingPage";
 import {BACKEND_URL_Restaurants} from "../../libs/config";
 
 function RestaurantInfo({restaurant, dispatch, id, newRec, cuisine}) {
@@ -17,7 +16,8 @@ function RestaurantInfo({restaurant, dispatch, id, newRec, cuisine}) {
       //console.log( restaurant);
     }
     getRestaurants();
-  }, [id]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id, cuisine]);
 
   // console.log("Restaurant id is " + restaurant.id);
  

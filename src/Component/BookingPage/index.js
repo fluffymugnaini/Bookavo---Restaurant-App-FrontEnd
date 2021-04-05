@@ -111,6 +111,7 @@ function BookingPage({ restaurant, id }, props) {
       setBookedSlots(data);
     }                                                                                                          
     getBookedSlots()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[watchedDate]);
 
 
