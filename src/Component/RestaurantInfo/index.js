@@ -1,8 +1,8 @@
-import React, { useReducer, useEffect, useState } from "react";
+import React, {useEffect} from "react";
 import css from "./restInfo.module.css";
 import Button from "../Button";
 import Header from "../Header";
-import { Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import BookingPage from "../BookingPage";
 import {BACKEND_URL_Restaurants} from "../../libs/config";
 
@@ -31,7 +31,7 @@ function RestaurantInfo({restaurant, dispatch, id, newRec, cuisine}) {
         <img
           className={css.img}
           src={restaurant.photoURL}
-          alt="restaurant image"
+          alt="restaurant"
           height="600px"
         />
 

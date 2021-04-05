@@ -1,5 +1,4 @@
 import './App.css';
-import Header from '../Header/';
 // import Button from '../Button';
 import RestaurantInfo from '../RestaurantInfo';
 import BookingPage from '../BookingPage';

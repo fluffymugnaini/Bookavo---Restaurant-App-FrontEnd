@@ -1,5 +1,4 @@
-import React, { useReducer, useState } from "react";
-import bookavobackground2 from "../../../src/bookavobackground2.png";
+import React from "react";
 import bookavologo from "../../../src/bookavologo.png";
 import css from "./landingPage.module.css";
 import { withRouter, useHistory } from "react-router-dom";
@@ -22,7 +21,7 @@ function LandingPage(props) {
     <div className={css.bg}>
     
       <div className={css.content}>
-        <img src={bookavologo} className={css.logo}></img>
+        <img src={bookavologo} className={css.logo} alt="bookavo logo"></img>
         <div className={css.tagline}>
           <p className={css.tag}>EAT AROUND THE WORLD,</p>
           <p className={css.tag}>IN YOUR CITY</p>
