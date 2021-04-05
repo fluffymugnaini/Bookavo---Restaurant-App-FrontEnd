@@ -18,12 +18,11 @@ function App() {
   const [restaurant, dispatch] = useReducer(reducer, INITIAL_REST);
   const [id, setId] = useState(0);  //this is not the restaurant id, is the index position of the restaurant withing the array containing multiple restaurants of the same cuisine
   const [cuisine, setCuisine] = useState('Italy');
-  console.log(`Index is ${id}`); //it was restaurant id before
+  // console.log(`Index is ${id}`); //it was restaurant id before
 
 
    function newRec() {
-    //setId(Math.floor(Math.random() * 4) + 1);
-    setId(Math.floor(Math.random() * 4));  // for use with cuisine, with three restaurants per cuisine type
+    setId(Math.floor(Math.random() * 4));  
     console.log(`Button id is ${id}`);
   }
 
@@ -36,7 +35,7 @@ function App() {
               <Link to="/">HOME PAGE</Link>
             </li>
           </ul>
-<AuthButton/>
+        <AuthButton/>
           <nav className="nav">
             <ul>
               <li>

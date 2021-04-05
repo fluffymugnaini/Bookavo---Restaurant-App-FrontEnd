@@ -3,18 +3,14 @@ import { useForm, Controller, useWatch } from "react-hook-form";
 import css from "./bookingPage.module.css";
 import BACKEND_URL_Bookings from "../../libs/config";
 import {BACKEND_URL_TimeSlots} from "../../libs/config";
-//import {BACKEND_URL_Restaurants} from "../../libs/config";
 import DatePicker from "react-datepicker"; //if needed we can also import register locale
 import "react-datepicker/dist/react-datepicker.css";
-//import {enGB} from 'date-fns/esm/locale';
 import { startOfDay } from 'date-fns';  //if needed we can also import format, parseISO
 import Header from '../Header';
 import { withRouter, useHistory } from "react-router-dom";
-//registerLocale('enGB', enGB);
 
 
 function BookingPage({ restaurant, id }, props) {
-  //!! On page refresh redirect to the landing page or make sure that the restaurant and id data is not lost on reload  - check maybe local storage
   const history = useHistory()
   const onClick = () => {
     history.push('/confirmation')
@@ -40,9 +36,9 @@ function BookingPage({ restaurant, id }, props) {
     name: "number",
     defaultValue: "0"});
 
-  console.log("the date from use watch " + watchedDate);
-  console.log("the noPeople from use watch " + watchedNoOfPeople);
-  console.log(`Restaurant id from booking page is ${id}`);
+  // console.log("the date from use watch " + watchedDate);
+  // console.log("the noPeople from use watch " + watchedNoOfPeople);
+  // console.log(`Restaurant id from booking page is ${id}`);
 
   const [bookedSlots, setBookedSlots] = useState([])
 
@@ -80,15 +76,13 @@ function BookingPage({ restaurant, id }, props) {
       })
   }
   const onSubmit = (data) => {
-    console.log('this is data: ', data)
     sendSms(data)
     postBooking(data)
-    Book({ id })
     onClick()
   }
 
   const postBooking = (formData) => {
-    console.log(formData.date)
+    // console.log(formData.date)
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -106,12 +100,6 @@ function BookingPage({ restaurant, id }, props) {
     fetch(`${BACKEND_URL_Bookings}`, requestOptions)
   }
 
-  //!!! FUNCTION IS JUST TEMPORARY SHOWING WHEN THE DATA IS SUBMITTED
-  //This can be used instead to redirect to the booking confirmation page where we thank them for the booking and give them the latest covid safety info for restaurants
-  function Book({ id }) {
-    console.log(`This id ( ${id} ) is logged when the submit button is pressed`)
-  }
-
   //GET THE SLOTS ALREADY BOOKED
   useEffect(() => {
     async function getBookedSlots() {
@@ -119,14 +107,14 @@ function BookingPage({ restaurant, id }, props) {
         `${BACKEND_URL_TimeSlots}?restaurantId=${id}&date=${formatDate(watchedDate).toString()}` //
       );
       let data = await response.json();
-      console.log(data);
+      // console.log(data);
       setBookedSlots(data);
     }                                                                                                          
     getBookedSlots()
   },[watchedDate]);
 
 
-  console.log(bookedSlots)
+  // console.log(bookedSlots)
 
   //Format the date to match the match the format required for the 
   function formatDate(date){
@@ -214,7 +202,7 @@ function BookingPage({ restaurant, id }, props) {
     }
   })
 
-  console.log(filteredTimeSlots)
+  // console.log(filteredTimeSlots)
 
   return (
     <>
@@ -250,8 +238,7 @@ function BookingPage({ restaurant, id }, props) {
                 selected={props.value}
                 dateFormat="dd-MM-yyyy"
                 defaultValue={startOfDay(new Date())}
-                // locale='enGB'
-                minDate={startOfDay(new Date())} //set earliest date available to book to today -- startOfDay vs startOfToday
+                minDate={startOfDay(new Date())} 
               />
             )}
             ref={register({ required: true })}
@@ -261,10 +248,6 @@ function BookingPage({ restaurant, id }, props) {
         <label>Time:</label>
         <select name="time" ref={register({ required: true })}>
           <option value="">Select...</option>
-          {/* {allRestaurantTimeSlots.map((item) =>{
-                 return <option value={item.toString()}>{item}</option>
-        })} */}
-
           {filteredTimeSlots.map((item) => {
             return <option value={item.toString()}>{item}</option>;
           })}

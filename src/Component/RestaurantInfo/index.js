@@ -8,42 +8,19 @@ import {BACKEND_URL_Restaurants} from "../../libs/config";
 
 function RestaurantInfo({restaurant, dispatch, id, newRec, cuisine}) {
   const website = `https://${restaurant.websiteURL}`;
-  // const [restaurant, dispatch] = useReducer(reducer, INITIAL_REST);
-  // const [id, setId] = useState(1);
- 
-  // let cuisine = "Italy";  //just for testing, we need to get the cuisine passed down from the landing page
 
   useEffect(() => {
     async function getRestaurants() {
       let response = await fetch(`${BACKEND_URL_Restaurants}?cuisine=${cuisine}`);
       let data = await response.json();
-      //console.log(data[id]);
-      //console.log(data[id].id)
       dispatch({ type: "REST", payload: data[id]});
       //console.log( restaurant);
     }
     getRestaurants();
   }, [id]);
 
-  console.log(restaurant);
-  console.log("Restaurant id is " + restaurant.id);
-  // useEffect(() => {
-  //   async function getRestaurants() {
-  //     let response = await fetch(`${BACKEND_URL_Restaurants}/${id}`);
-  //     let data = await response.json();
-  //     console.log(data);
-  //     dispatch({ type: "REST", payload: data });
-  //     console.log(restaurant);
-  //   }
-  //   getRestaurants();
-  // }, [id]);
-
-
-  // function newRec() {
-  //   setId(Math.floor(Math.random() * 4) + 1);
-  //   console.log(id);
-  // }
-
+  // console.log("Restaurant id is " + restaurant.id);
+ 
 
   return (
     <>
