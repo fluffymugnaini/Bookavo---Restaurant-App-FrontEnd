@@ -286,7 +286,7 @@ function BookingPage({ restaurant, id }, props) {
         {errors.email && errors.email.type === "pattern" && (
           <p className={css.error}>Must be a valid e-mail address</p>
         )}
-        <input disabled={isSubmitting} type="submit" onClick={() => {}} />
+        <input className={css.button} disabled={isSubmitting} type="submit" onClick={() => {}} />
       </form>
       <p className={css.p}>
         If you have any special requirements, or are booking for a party larger

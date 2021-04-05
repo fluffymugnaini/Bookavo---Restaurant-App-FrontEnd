@@ -56,8 +56,8 @@ button
   border-color: rgba(255, 255, 255, 0.521);
  
   margin-left: 5px;
-  padding: 15px 90px;
-  font-size: 2em;
+  padding: 15px 50px;
+  font-size: 1.5em;
   font-weight: 100;
   letter-spacing: 6px;
  
@@ -74,6 +74,10 @@ button:hover {
   background-color: transparent;
     cursor: pointer;
     transition: all 200ms ease-in-out;
+}
+
+.loginlogout {
+  border-radius: 4px;
 }
 
 

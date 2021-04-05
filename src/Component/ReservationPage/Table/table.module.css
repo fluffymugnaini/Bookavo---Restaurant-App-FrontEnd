@@ -1,10 +1,10 @@
 table {
 border-collapse: collapse;
-width: 100%;
+width: 80%;
 background-color: white;
 color: black;
-margin-bottom: 20px;
-padding: 50px;
+margin-bottom: 20%;
+/* padding: 50px; */
 width: fit-content;
 display: block;
 margin: 0 auto;
@@ -17,6 +17,7 @@ margin: 0 auto;
      display: grid;
     grid-template-columns: repeat(6, 1fr);
     text-align: center;
+
 }
 
 .rowData {
@@ -24,12 +25,13 @@ margin: 0 auto;
     justify-content: space-between; */
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    
+    text-align: center;
 }
 
 .tableHeading {
     font-size: 1.8em;
-    text-align: left;
+
+
     
 }
 
@@ -38,7 +40,7 @@ th{
 }
 
 th, td {
-text-align: center;
+text-align: left;
 
 }
 

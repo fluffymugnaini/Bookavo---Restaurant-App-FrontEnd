@@ -22,24 +22,25 @@
  {
   /* background: rgb(57, 58, 65); */
   background: #ec598f98;
-  
+  display: inline-block;
   color: white;
   text-transform: uppercase;
   border-color: rgba(255, 255, 255, 0.521);
  
   margin-left: 5px;
-  padding: 15px 90px;
-  font-size: 2em;
+  padding: 25px 50px;
+  width: 100%;
+  font-size: 1.8em;
   font-weight: 100;
   letter-spacing: 10px;
  
 }
 
 .button {
-  transition: 0.3s all;
-  transform: translateY(3px);
+  /* transition: 0.3s all;
+  transform: translateY(3px); */
   
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .button:hover {
@@ -61,4 +62,11 @@
     background-color: rgb(57, 58, 65);
     cursor: pointer;
     transition: all 200ms ease-in-out;
+}
+
+@media all and (max-width:30em){
+ button{
+  display:block;
+  margin:0.2em auto;
+}
 }
