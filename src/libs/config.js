@@ -1,6 +1,6 @@
-export const BACKEND_URL_Restaurants = "https://localhost:5001/restaurants";
-export const BACKEND_URL_TimeSlots = "https://localhost:5001/timeslots";
+export const BACKEND_URL_Restaurants = "https://the-hand-final-project2.herokuapp.com/restaurants";
+export const BACKEND_URL_TimeSlots = "https://the-hand-final-project2.herokuapp.com/timeslots";
 
-const BACKEND_URL_Bookings = "https://localhost:5001/bookings";
+const BACKEND_URL_Bookings = "https://the-hand-final-project2.herokuapp.com/bookings";
 
 export default BACKEND_URL_Bookings;
