@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useForm, Controller, useWatch } from "react-hook-form";
 import css from "./bookingPage.module.css";
 import BACKEND_URL_Bookings from "../../libs/config";
-import {BACKEND_URL_TimeSlots} from "../../libs/config";
+import {BACKEND_URL_TimeSlots, BACKEND_URL_Twilio} from "../../libs/config";
 import DatePicker from "react-datepicker"; //if needed we can also import register locale
 import "react-datepicker/dist/react-datepicker.css";
 import { startOfDay } from 'date-fns';  //if needed we can also import format, parseISO
@@ -42,39 +42,17 @@ function BookingPage({ restaurant, id }, props) {
 
   const [bookedSlots, setBookedSlots] = useState([])
 
-  const options = {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
+  async function sendSms(formData) {
+    let messageBody = `A ${restaurant.restaurantName} Booking Confirmation for a group of ${formData.number} people on ${formatDate(formData.date)} at ${formData.time}. We look forward to seeing you.`
+    let response =  await fetch(
+      `${BACKEND_URL_Twilio}?messageBody=${messageBody}&mobile=${formData.mobile}}` //
+    );
+    let data = await response.json();
+
+    console.log(data);
   }
-  const sendSms = (data1) => {
-    const message = {
-      to: data1.mobile,
-      body: `A ${
-        restaurant.restaurantName
-      } Booking Confirmation for a group of ${
-        data1.number
-      } people at ${data1.date.toLocaleDateString('en-UK', options)} ${
-        data1.time
-      }`,
-    }
-    fetch('/api/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(message),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
-          console.log('sms send sucessfully', data)
-        } else {
-          console.log('sms did not send sucessfully', data)
-        }
-      })
-  }
+
+
   const onSubmit = (data) => {
     sendSms(data)
     postBooking(data)
