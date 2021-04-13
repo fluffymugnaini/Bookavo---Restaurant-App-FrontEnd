@@ -4,28 +4,42 @@ import Header from "../Header";
 import css from "./reservationPage.module.css";
 import BACKEND_URL_Bookings from "../../libs/config";
 import { useAuth0 } from "@auth0/auth0-react";
+import { id } from "date-fns/locale";
 
 function ReservationPage() {
   const [data, setData] = useState([]);
   const { user, isAuthenticated } = useAuth0();
-  //   const auth0id = user.sub;
 
-  // console.log(user);
-  // console.log(isAuthenticated);
+   async function getBookings() {
+     if (isAuthenticated) {
+       let response = await fetch(`${BACKEND_URL_Bookings}?token=${user.sub}`);
+       let data = await response.json();
+       setData(data);
+     }
+   }
 
   useEffect(() => {
-    async function getBookings() {
-      if(isAuthenticated){
-        let response = await fetch(`${BACKEND_URL_Bookings}?token=${user.sub}`);
-        let data = await response.json();
-        // console.log(data);
-        // console.log(data.bookingDate);
-        setData(data);
-      }
-    }
     getBookings();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[isAuthenticated]);
+  }, [isAuthenticated]);
+
+  async function deleteBooking(bookingId, onSuccess) {
+    let response = await fetch(`${BACKEND_URL_Bookings}/${bookingId}`, {
+      method: "DELETE",
+    });
+    // let data = await response.json();
+    // onSuccess(data);
+    
+    console.log(bookingId);
+  }
+
+  
+  function handleClick(bookingId){
+    deleteBooking(bookingId, () => {
+      setData(data.filter((bookingId) => data.bookingId !== bookingId));
+      // getBookings();
+      // window.location.reload();
+    })
+  };
 
   const columns = useMemo(
     () => [
@@ -56,6 +70,26 @@ function ReservationPage() {
           {
             Header: "Mobile",
             accessor: "customerMobile",
+          },
+          // {
+          //   Header: "Id",
+          //   accessor: "bookingId",
+          // },
+          // Below am trying to add a delete button to each row...
+
+          {
+            Header: "Operation",
+            accessor: "bookingId",
+            Cell: ({ cell }) => (
+              <button
+                value={cell.row.values.bookingId}
+                onClick={() => {handleClick(cell.row.values.bookingId);
+                window.location.reload();
+                }}
+              >
+                DELETE
+              </button>
+            ),
           },
         ],
       },
