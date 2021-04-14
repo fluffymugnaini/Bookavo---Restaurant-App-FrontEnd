@@ -1,14 +1,4 @@
 export const INITIAL_REST = {
-  // restaurantName: "",
-  // description: "",
-  // openingTimes: "",
-  // closingTimes: "",
-  // phoneNumber: "",
-  // addressLine1: "",
-  // area: "",
-  // postcode: "",
-  // websiteURL: "",
-  // photoURL: "",
 };
 
 // can add action types but at the moment we only have one.

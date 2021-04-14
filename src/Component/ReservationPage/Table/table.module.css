@@ -4,7 +4,6 @@ width: 60%;
 background-color: white;
 color: black;
 margin-bottom: 20%;
-/* padding: 50px; */
 width: fit-content;
 display: block;
 margin: 0 auto;
@@ -12,17 +11,13 @@ margin: 0 auto;
 }
 
 .headings {
-    /* display: flex;
-    justify-content: space-around; */
-     display: grid;
+    display: grid;
     grid-template-columns: repeat(7, 1fr);
     text-align: center;
 
 }
 
 .rowData {
-    /* display: flex;
-    justify-content: space-between; */
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     text-align: center;
@@ -30,9 +25,6 @@ margin: 0 auto;
 
 .tableHeading {
     font-size: 1.8em;
-
-
-    
 }
 
 th{
@@ -50,16 +42,5 @@ td {
     padding-top: 15px;
 }
 
-/* .titles {
-    display: flex;
-    justify-content: space-between;
-
-} */
-
-/* .individualHeadings {
-     display: inline-block;
-     
-    
-} */
 
 

@@ -7,15 +7,11 @@ import CountryButton from "./CountryButton";
 
 
 function LandingPage(props) {
-
-  // console.log(props);
   const history = useHistory();
   const onClick = (country) => {
     history.push("/recs");
     props.setCuisine(country);
   };
-
-  // console.log(props.cuisine);
 
   return (
     <div className={css.bg}>

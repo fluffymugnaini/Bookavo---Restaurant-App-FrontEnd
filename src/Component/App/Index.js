@@ -28,8 +28,8 @@ function App() {
             <li>
               <Link to="/">HOME PAGE</Link>
             </li>
-          </ul>
         <AuthButton/>
+          </ul>
           <nav className="nav">
             <ul>
               <li>

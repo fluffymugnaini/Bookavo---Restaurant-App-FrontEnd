@@ -13,14 +13,11 @@ function RestaurantInfo({restaurant, dispatch, id, newRec, cuisine}) {
       let response = await fetch(`${BACKEND_URL_Restaurants}?cuisine=${cuisine}`);
       let data = await response.json();
       dispatch({ type: "REST", payload: data[id]});
-      //console.log( restaurant);
     }
     getRestaurants();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, cuisine]);
 
-  // console.log("Restaurant id is " + restaurant.id);
- 
 
   return (
     <>
@@ -45,10 +42,6 @@ function RestaurantInfo({restaurant, dispatch, id, newRec, cuisine}) {
         </ul>
 
         <div className={css.buttons}>
-          {/* <Route path='/bookings'>
-            <BookingPage id={`${id}`} />
-        </Route> */}
-          {/* <Link to={{ pathname: "/bookings", state: { id: { id } } }}> */}
           <Link
             to={{
               pathname: "/bookings",

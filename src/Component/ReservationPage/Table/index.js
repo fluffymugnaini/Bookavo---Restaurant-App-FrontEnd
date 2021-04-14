@@ -18,8 +18,6 @@ function Table({ columns, data }) {
     );
   }
 
-
-
   const defaultColumn = React.useMemo(
     () => ({
       Filter: TextFilter,
@@ -47,15 +45,14 @@ function Table({ columns, data }) {
     Render the UI for your table
     - react-table doesn't have UI, it's headless. We just need to put the react-table props from the Hooks, and it will do its magic automatically
   */
+ 
   return (
     <div className={css.container}>
       <table {...getTableProps()}>
         <thead className={css.tableHeading}>
-          {/* <div className = {css.titles}> */}
           {headerGroups.map((headerGroup) => (
             <tr className={css.headings} {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
-                //   <th {...column.getHeaderProps()}>{column.render("Header")}</th>
                 <div className={css.individualHeadings}>
                   <th
                     {...column.getHeaderProps(column.getSortByToggleProps())}
@@ -75,7 +72,6 @@ function Table({ columns, data }) {
               ))}
             </tr>
           ))}
-          {/* </div> */}
         </thead>
         <tbody {...getTableBodyProps()}>
           {rows.map((row, i) => {

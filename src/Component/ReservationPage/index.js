@@ -28,7 +28,6 @@ function ReservationPage() {
     });
     // let data = await response.json();
     // onSuccess(data);
-    
     console.log(bookingId);
   }
 
@@ -36,8 +35,6 @@ function ReservationPage() {
   function handleClick(bookingId){
     deleteBooking(bookingId, () => {
       setData(data.filter((bookingId) => data.bookingId !== bookingId));
-      // getBookings();
-      // window.location.reload();
     })
   };
 
@@ -71,12 +68,6 @@ function ReservationPage() {
             Header: "Mobile",
             accessor: "customerMobile",
           },
-          // {
-          //   Header: "Id",
-          //   accessor: "bookingId",
-          // },
-          // Below am trying to add a delete button to each row...
-
           {
             Header: "Operation",
             accessor: "bookingId",

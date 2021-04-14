@@ -36,10 +36,6 @@ function BookingPage({ restaurant, id }, props) {
     name: "number",
     defaultValue: "0"});
 
-  // console.log("the date from use watch " + watchedDate);
-  // console.log("the noPeople from use watch " + watchedNoOfPeople);
-  // console.log(`Restaurant id from booking page is ${id}`);
-
   const [bookedSlots, setBookedSlots] = useState([])
 
   async function sendSms(formData) {
@@ -60,7 +56,6 @@ function BookingPage({ restaurant, id }, props) {
   }
 
   const postBooking = (formData) => {
-    // console.log(formData.date)
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -85,15 +80,10 @@ function BookingPage({ restaurant, id }, props) {
         `${BACKEND_URL_TimeSlots}?restaurantId=${id}&date=${formatDate(watchedDate).toString()}` //
       );
       let data = await response.json();
-      // console.log(data);
       setBookedSlots(data);
     }                                                                                                          
     getBookedSlots()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[watchedDate]);
-
-
-  // console.log(bookedSlots)
 
   //Format the date to match the match the format required for the 
   function formatDate(date){
@@ -144,7 +134,6 @@ function BookingPage({ restaurant, id }, props) {
       }
   
       var fullDate= dayString.concat(`-${monthString}-${yearString}`); //concatenated date format DD/MM/YYYY
-      //console.log(fullDate);
       return fullDate;
     }
   }
@@ -180,8 +169,6 @@ function BookingPage({ restaurant, id }, props) {
       return true;
     }
   })
-
-  // console.log(filteredTimeSlots)
 
   return (
     <>

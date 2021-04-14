@@ -1,25 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda&display=swap');
 
-/* .wrapper {
-  display: flex;
-  flex-direction: column;
-
-} */
-
 .container {
   color: white;
-  /* text-align: center; */
   display: block;
   margin: 0 auto;
   position: relative;
   top: -160px;
-  width: 45%;
+  max-width: 800px;
   height: 30%;
+
 }
 
 .img {
   width: 100%;
-
+  object-fit: cover;
 }
 
 .restName {
@@ -44,44 +38,28 @@
   
   list-style-type: none;
   font-size: 1.5em;
-  /* display: flex;
-  justify-content: right; */
   flex-direction: column;
   padding: 2%;
   margin: 0;
   background-color: rgba(0, 0, 0, 0.651);
   max-width: fit-content;
    overflow-wrap: break-word;
-  /* position: relative;
-  bottom: 290px; */
   position: absolute;
   bottom: 0;
   right: 0;
-  /* margin-left: 57.7%; */
 }
 
 .buttons {
   display: flex;
-  /* justify-content: left; */
-  /* margin: 0 24.7%; */
   position: absolute;
   left: 0;
   bottom: 0;
-  /* top: -440px; */
   padding: 0;
   margin: 0;
   flex-wrap: wrap;
-
-  /* display: block;
-  appearance: none; */
-
-  
-  
   text-transform: uppercase;
   padding: 10px 0px;
   border-radius:4px;
-  
- 
 }
 
 .extraDetails {
@@ -94,4 +72,15 @@
 .description {
   margin: 0 28%;
   color: white;
+}
+
+@media (max-width: 500px){
+  .restDetails {
+  bottom: 50%;
+  left: 50%;
+  }
+  .container {
+    width: 95%;
+    margin: auto;
+  }
 }
