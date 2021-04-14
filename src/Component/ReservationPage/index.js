@@ -81,7 +81,8 @@ function ReservationPage() {
             Header: "Operation",
             accessor: "bookingId",
             Cell: ({ cell }) => (
-              <button
+              <button 
+                className = {css.delete}
                 value={cell.row.values.bookingId}
                 onClick={() => {handleClick(cell.row.values.bookingId);
                 window.location.reload();

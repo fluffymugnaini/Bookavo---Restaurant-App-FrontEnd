@@ -13,11 +13,13 @@
   margin: 0 auto;
   position: relative;
   top: -160px;
-  width: 50%;
+  width: 45%;
+  height: 30%;
 }
 
 .img {
   width: 100%;
+
 }
 
 .restName {
@@ -90,6 +92,6 @@
 }
 
 .description {
-  margin: 0 25%;
+  margin: 0 28%;
   color: white;
 }
