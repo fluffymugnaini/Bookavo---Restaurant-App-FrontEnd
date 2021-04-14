@@ -16,7 +16,6 @@ form {
 .form {
   background: #0e101c;
   max-width: 400px;
-  /* margin: 0 auto; */
 }
 
 p {
@@ -129,7 +128,6 @@ hr {
 }
 
 .error {
-
   display: inline;
   content: "⚠ ";
   color: red;

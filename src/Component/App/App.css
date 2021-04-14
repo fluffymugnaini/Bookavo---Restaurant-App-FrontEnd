@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@300&display=swap");
 
 body {
-  /* background: linear-gradient(90deg, rgba(36,37,41,1) 19%, rgba(12,14,18,1) 48%); */
   background: linear-gradient(90deg, rgb(31, 37, 59) 19%, rgb(18, 21, 27) 48%);
   font-family: "Quicksand", sans-serif;
   color: white;
@@ -17,15 +16,9 @@ body {
   padding: 0;
   position: absolute;
   display: block;
-  margin: 0 auto;
+  margin: 0 1%;
   top: 20px;
-  
 }
-
-/* * {
-    margin: 0;
-    padding: 0;
-} */
 
 a:link {
     color: rgb(255, 255, 255);
@@ -48,7 +41,6 @@ a:active {
 
 button
  {
-  /* background: rgb(57, 58, 65); */
   background: #ec598f98;
   
   color: white;

@@ -1,5 +1,4 @@
 import './App.css';
-// import Button from '../Button';
 import RestaurantInfo from '../RestaurantInfo';
 import BookingPage from '../BookingPage';
 import ReservationPage from '../ReservationPage';
@@ -10,15 +9,11 @@ import LandingPage from '../LandingPage';
 import ConfirmationPage from '../ConfirmationPage';
 import AuthButton from "../AuthButton";
 import { AuthProvider } from "../../authContext";
-// import LogoutButton from '../LogoutButton';
-// import LoginButton from '../LoginButton';
 
 function App() {
   const [restaurant, dispatch] = useReducer(reducer, INITIAL_REST);
   const [id, setId] = useState(0);  //this is not the restaurant id, is the index position of the restaurant withing the array containing multiple restaurants of the same cuisine
   const [cuisine, setCuisine] = useState('Italy');
-  // console.log(`Index is ${id}`); //it was restaurant id before
-
 
    function newRec() {
     setId(Math.floor(Math.random() * 4));  
