@@ -1,0 +1,55 @@
+
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0 10%;
+    
+}
+
+.logo {
+    width: 25%;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 1%;
+}
+
+.p {
+    font-size: 1.5em;
+    margin-bottom: 0;
+}
+
+.content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+   /* align-items: center; */
+   justify-content: center;
+    color: white;
+    
+}
+
+.bg {
+    
+    margin: 0;
+    padding: 0;
+    
+    min-height: 100vh;
+    background: url('../../bookavobackground2.png');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.tagline {
+    font-size: 1.5em;
+    padding-bottom: 2%;
+}
+
+.tag {
+    margin: 0;
+
+}
+

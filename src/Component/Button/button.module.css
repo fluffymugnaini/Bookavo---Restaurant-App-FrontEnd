@@ -1,0 +1,45 @@
+.button
+ {
+  background: #ec598f98;
+  display: inline-block;
+  color: white;
+  text-transform: uppercase;
+  border-color: rgba(255, 255, 255, 0.521);
+  margin-left: 5px;
+  padding: 25px 50px;
+  width: 100%;
+  font-size: 1.8em;
+  font-weight: 100;
+  letter-spacing: 10px;
+ 
+}
+
+.button {
+  opacity: 0.9;
+}
+
+.button:hover {
+  background-color: transparent;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+}
+
+.buttons {
+    font-size: 2em;
+    color: white;
+    background-color: transparent;
+    border-color: rgba(255, 255, 255, 0.377);
+}
+
+.buttons:hover {
+    background-color: rgb(57, 58, 65);
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+}
+/* 
+@media all and (max-width:30em){
+ button{
+  display:block;
+  margin:0.2em auto;
+}
+} */

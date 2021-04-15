@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@300&display=swap");
+
+body {
+  background: linear-gradient(90deg, rgb(31, 37, 59) 19%, rgb(18, 21, 27) 48%);
+  font-family: "Quicksand", sans-serif;
+  color: white;
+  text-decoration: none;
+}
+
+.nav {
+  display: none;
+}
+
+.homePage {
+  list-style-type: none;
+  padding: 0;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  width: 98%;
+  margin: 0 1%;
+  top: 10px;
+}
+
+a:link {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+/* A link that has been visited */
+a:visited {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+/* A link that is hovered on */
+a:hover {
+    color: rgb(59, 90, 170);
+    text-decoration: none;
+}
+/* A link that is selected */
+a:active {
+    color: white;
+}
+
+button
+ {
+  background: #ec598f98;
+  color: white;
+  text-transform: uppercase;
+  border-color: rgba(255, 255, 255, 0.521);
+  margin-left: 5px;
+  padding: 15px 30px;
+  font-size: 1.5em;
+  font-weight: 100;
+  letter-spacing: 6px;
+ 
+}
+
+button {
+  transition: 0.3s all;
+  /* transform: translateY(3px); */
+  opacity: 0.8;
+}
+
+button:hover {
+  background-color: transparent;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+}
+
+.loginlogout {
+  border-radius: 4px;
+}
+
+
+
+

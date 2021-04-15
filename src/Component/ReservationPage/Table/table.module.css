@@ -1,0 +1,46 @@
+table {
+border-collapse: collapse;
+width: 60%;
+background-color: white;
+color: black;
+margin-bottom: 20%;
+width: fit-content;
+display: block;
+margin: 0 auto;
+
+}
+
+.headings {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+
+}
+
+.rowData {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+}
+
+.tableHeading {
+    font-size: 1.8em;
+}
+
+th{
+    padding: 15px;
+}
+
+th, td {
+text-align: left;
+
+}
+
+td {
+    font-size: 1.3em;
+    padding: 8px;
+    padding-top: 15px;
+}
+
+
+
