@@ -1,8 +1,6 @@
 import { useSortBy, useTable, useFilters } from "react-table";
 import css from "./table.module.css";
 import React from "react";
-import Button from "../../Button";
-import BACKEND_URL_Bookings from "../../../libs/config";
 
 function Table({ columns, data }) {
   function TextFilter({ column: { filterValue, preFilteredRows, setFilter } }) {

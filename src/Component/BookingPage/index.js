@@ -83,6 +83,7 @@ function BookingPage({ restaurant, id }, props) {
       setBookedSlots(data);
     }                                                                                                          
     getBookedSlots()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[watchedDate]);
 
   //Format the date to match the match the format required for the 

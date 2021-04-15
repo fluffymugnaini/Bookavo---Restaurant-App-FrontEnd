@@ -4,7 +4,6 @@ import Header from "../Header";
 import css from "./reservationPage.module.css";
 import BACKEND_URL_Bookings from "../../libs/config";
 import { useAuth0 } from "@auth0/auth0-react";
-import { id } from "date-fns/locale";
 
 function ReservationPage() {
   const [data, setData] = useState([]);
@@ -20,10 +19,12 @@ function ReservationPage() {
 
   useEffect(() => {
     getBookings();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthenticated]);
 
   async function deleteBooking(bookingId, onSuccess) {
-    let response = await fetch(`${BACKEND_URL_Bookings}/${bookingId}`, {
+    //let response = await fetch(`${BACKEND_URL_Bookings}/${bookingId}`, {
+      await fetch(`${BACKEND_URL_Bookings}/${bookingId}`, {
       method: "DELETE",
     });
     // let data = await response.json();
@@ -86,6 +87,7 @@ function ReservationPage() {
         ],
       },
     ],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 
