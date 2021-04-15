@@ -10,9 +10,9 @@ ReactDOM.render(
   <Auth0Provider
     domain='dev--4j3brfv.eu.auth0.com'
     clientId='vkkqs3WniXuqKoNevjjRyhKD60CYjzA6'
-    // redirectUri='https://bookavo.netlify.app/reservations'
+    redirectUri='https://bookavo.netlify.app/reservations'
     //  redirectUri={window.location.origin}
-     redirectUri='http://localhost:3000/reservations'
+    //  redirectUri='http://localhost:3000/reservations'
   >
     <React.StrictMode>
       <App />
