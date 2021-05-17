@@ -15,6 +15,11 @@ Following this you should run our frontend
 '' npm i
 ''npm start 
 
+Or to visit the page, go here: [https://bookavo.netlify.app/]
+For fake restuarant log in details to check bookings:
+username: bayt@alyemani.com
+password: bookavo1234!
+
 ## Contributions
 
 As this project is a work in progress, you can expect to see regular changes. The Hand will continue to work on this project as we develop our skills, and as we decide where Bookavo could improve.
